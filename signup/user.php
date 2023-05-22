@@ -24,8 +24,8 @@ $degree_empty_msg = "";
 $major_empty_msg = "";
 $gpa_empty_msg = "";
 $gpa_from_empty_msg = "";
-$password1_from_empty_msg = "";
-$password2_from_empty_msg = "";
+$password1_empty_msg = "";
+$password2_empty_msg = "";
 
 $password_mismatched_msg = "";
 
@@ -144,11 +144,11 @@ if (isset($_POST['submit'])) {
   }
 
   if (empty($_POST['password1'])) {
-    $password1_from_empty_msg = 'الرجاء ادخال كلمة المرور';
+    $password1_empty_msg = 'الرجاء ادخال كلمة المرور';
   }
 
   if (empty($_POST['password2'])) {
-    $password2_from_empty_msg = 'الرجاء تأكيد كلمة المرور';
+    $password2_empty_msg = 'الرجاء تأكيد كلمة المرور';
   }
 
 
@@ -349,8 +349,8 @@ if (isset($_POST['submit'])) {
     $major_empty_msg == "" &&
     $gpa_empty_msg == "" &&
     $gpa_from_empty_msg == "" &&
-    $password1_from_empty_msg == "" &&
-    $password2_from_empty_msg == "" &&
+    $password1_empty_msg == "" &&
+    $password2_empty_msg == "" &&
     $password_mismatched_msg == "" &&
 
     $password_uppercase_msg == "" &&
@@ -467,8 +467,10 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="id_number" class="form-control rounded-3" placeholder="رقم الهوية">
                 <label>رقم الهوية</label>
                 <div class="text-start">
-                  <p class="text-danger"><?php echo $id_number_empty_msg;
-                                          echo $id_number_duplicate_msg; ?></p>
+                  <p class="text-danger"><?php echo $id_number_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $id_number_duplicate_msg; ?></p>
                 </div>
               </div>
 
@@ -476,8 +478,10 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="mobile_number" class="form-control rounded-3" placeholder="رقم الجوال">
                 <label>رقم الجوال</label>
                 <div class="text-start">
-                  <p class="text-danger"><?php echo $mobile_number_empty_msg;
-                                          echo $mobile_number_duplicate_msg; ?></p>
+                  <p class="text-danger"><?php echo $mobile_number_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $mobile_number_duplicate_msg; ?></p>
                 </div>
               </div>
 
@@ -508,11 +512,19 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="username" class="form-control rounded-3" placeholder="اسم المستخدم">
                 <label>اسم المستخدم</label>
                 <div class="text-start">
-                  <p class="text-danger"><?php echo " " . $username_empty_msg;
-                                          echo " " . $username_specialchars_msg;
-                                          echo " " . $username_len15_msg;
-                                          echo " " . $username_len3_msg;
-                                          echo " " . $username_duplicate_msg ?></p>
+                  <p class="text-danger"><?php echo  $username_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $username_specialchars_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $username_len15_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo  $username_len3_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $username_duplicate_msg ?></p>
                 </div>
               </div>
 
@@ -520,8 +532,10 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="email" class="form-control rounded-3" placeholder="البريد الإلكتروني">
                 <label>البريد الإلكتروني</label>
                 <div class="text-start">
-                  <p class="text-danger"><?php echo $email_empty_msg;
-                                          echo $email_duplicate_msg; ?></p>
+                  <p class="text-danger"><?php echo $email_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $email_duplicate_msg; ?></p>
                 </div>
               </div>
             </div>
@@ -626,9 +640,13 @@ if (isset($_POST['submit'])) {
                 <label for="cv" class="fw-bold ">ارفاق السيرة الذاتية:</label>
                 <input type="file" id="cv" name="cv" class=" form-control" accept=".pdf">
                 <div class="text-start">
-                  <p class="text-danger"><?php echo " " . $cv_empty_msg;
-                                          echo " " . $cv_type_msg;
-                                          echo " " . $cv_size_msg; ?></p>
+                  <p class="text-danger"><?php echo $cv_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $cv_type_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo  $cv_size_msg; ?></p>
                 </div>
               </div>
 
@@ -636,9 +654,13 @@ if (isset($_POST['submit'])) {
                 <label for="id_photo" class="fw-bold ">صورة من بطاقة الهوية:</label>
                 <input type="file" id="id_photo" name="id_photo" class=" form-control" accept="image/gif, image/png, image/jpg, image/jpeg, .pdf">
                 <div class="text-start">
-                  <p class="text-danger"><?php echo " " . $id_photo_empty_msg;
-                                          echo " " . $id_photo_type_msg;
-                                          echo " " . $id_photo_size_msg; ?></p>
+                  <p class="text-danger"><?php echo $id_photo_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $id_photo_type_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo  $id_photo_size_msg; ?></p>
                 </div>
               </div>
 
@@ -646,9 +668,13 @@ if (isset($_POST['submit'])) {
                 <label for="avatar" class="fw-bold ">صورة شخصية:</label>
                 <input type="file" id="avatar" name="avatar" class=" form-control" accept="image/gif, image/png, image/jpg, image/jpeg">
                 <div class="text-start">
-                  <p class="text-danger"><?php echo " " . $avatar_empty_msg;
-                                          echo " " . $avatar_type_msg;
-                                          echo " " . $avatar_size_msg; ?></p>
+                  <p class="text-danger"><?php echo $avatar_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $avatar_type_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo  $avatar_size_msg; ?></p>
                 </div>
               </div>
 
@@ -656,9 +682,13 @@ if (isset($_POST['submit'])) {
                 <label for="degree_photo" class="fw-bold ">صورة لأحدث مؤهل دراسي:</label>
                 <input type="file" id="degree_photo" name="degree_photo" class=" form-control" accept="image/gif, image/png, image/jpg, image/jpeg, .pdf">
                 <div class="text-start">
-                  <p class="text-danger"><?php echo  " " . $degree_photo_empty_msg;
-                                          echo " " . $degree_photo_type_msg;
-                                          echo " " . $degree_photo_size_msg; ?></p>
+                  <p class="text-danger"><?php echo $degree_photo_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $degree_photo_type_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $degree_photo_size_msg; ?></p>
                 </div>
               </div>
 
@@ -670,7 +700,7 @@ if (isset($_POST['submit'])) {
                 <input type="password" name="password1" class="form-control rounded-3" placeholder="كلمة المرور">
                 <label>كلمة المرور</label>
                 <div class="text-start">
-                  <p class="text-danger"><?php echo $password1_from_empty_msg ?></p>
+                  <p class="text-danger"><?php echo $password1_empty_msg ?></p>
                 </div>
               </div>
 
@@ -678,19 +708,34 @@ if (isset($_POST['submit'])) {
                 <input type="password" name="password2" class="form-control rounded-3" placeholder="تأكيد كلمة المرور">
                 <label>تأكيد كلمة مرور</label>
                 <div class="text-start">
-                  <p class="text-danger"><?php echo $password2_from_empty_msg ?></p>
+                  <p class="text-danger"><?php echo $password2_empty_msg ?></p>
                 </div>
               </div>
             </div>
 
             <div>
-              <p class="text-danger text-center"><?php echo  $password_mismatched_msg;
-                                                  echo " " . $password_uppercase_msg;
-                                                  echo " " . $password_lowercase_msg;
-                                                  echo " " . $password_number_msg;
-                                                  echo " " . $password_specialchars_msg;
-                                                  echo " " . $password_strlen_msg ?></p>
+              <p class="text-danger text-start"><?php echo  $password_mismatched_msg; ?></p>
             </div>
+            <div>
+              <p class="text-danger text-start"><?php echo $password_uppercase_msg; ?></p>
+            </div>
+
+            <div>
+              <p class="text-danger text-start"><?php echo $password_lowercase_msg; ?></p>
+            </div>
+
+            <div>
+              <p class="text-danger text-start"><?php echo $password_number_msg; ?></p>
+            </div>
+
+            <div>
+              <p class="text-danger text-start"><?php echo $password_specialchars_msg; ?></p>
+            </div>
+
+            <div>
+              <p class="text-danger text-start"><?php echo $password_strlen_msg ?></p>
+            </div>
+
 
             <button name="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-dark text-white fw-bold " type="submit">تسجيل حساب جديد</button>
             <small class="fw-bold">لديك حساب بالفعل؟ <a href="signin/user.php"> سجل دخول</a></small>
