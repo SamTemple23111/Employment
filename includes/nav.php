@@ -1,6 +1,21 @@
 <?php
 $activePage = basename($_SERVER['PHP_SELF'], ".php");
+
+
+ini_set('error_reporting', 0);
+ini_set('display_errors', 0);
+
+
+$id = $_SESSION['id'];
+$first_name = $_SESSION['first_name'];
+$name = $_SESSION['name'];
+$first_name = $_SESSION['first_name'];
+$role = $_SESSION['role'];
+
+
 ?>
+
+
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-md py-4 justify-content-center">
     <div class="container">
@@ -21,32 +36,46 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
                 </li>
             </ul>
             <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
-                <li class="nav-item">
+
+
+                <?php
+
+                if ($role == 'user') {
+                    echo "                <div class='dropdown text-end'>
+                    <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $first_name <img src='https://github.com/mdo.png' alt='mdo' width='32' height='32' class='rounded-circle'>
+                    </a>
+                    <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
+                        <li><a class='dropdown-item' href='database/logout'>تسجيل خروج</a></li>
+                    </ul>
+                </div>";
+                }
+                if ($role == 'facility') {
+                    echo '                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-light text-decoration-none dropdown-toggle dropend" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+                        <li><a class="dropdown-item" href="database/logout">تسجيل خروج</a></li>
+                    </ul>
+                </div>';
+                }
+
+                if ($role !== 'facility' && $role !== 'user') {
+                    echo '                <li class="nav-item">
                     <a href="signup/home.php"><button type="button" class="btn btn-secondary me-3 sign-in">تسجيل</button></a>
                 </li>
                 <li class="nav-item">
                     <a href="signin/home.php"><button type="button" class="btn btn-light sign-in">تسجيل دخول</button></a>
-                </li>
+                </li>';
+                }
+
+
+                ?>
+
+
+
 
             </ul>
-
-
-            <!-- 
-            <div class="dropdown text-end">
-          <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-                      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-
-             -->
         </div>
-
-    </div>
     </div>
 </nav>

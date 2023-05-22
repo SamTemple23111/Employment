@@ -1,4 +1,8 @@
 <?php
+session_start();
+?>
+
+<?php
 $title = 'Jobs';
 include 'includes/beginning.php';
 include 'includes/nav.php';

@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
     if ($row_num == 1) {
       $_SESSION['id'] = $fetch['id'];
       $_SESSION['role'] = $fetch['role'];
-      $_SESSION['name'] = $fetch['name'];
+      $_SESSION['first_name'] = $fetch['first_name'];
       // $_SESSION['logo'] = $fetch['logo'];
       header('location:index.php');
     } else {

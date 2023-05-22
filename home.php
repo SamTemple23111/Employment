@@ -1,8 +1,16 @@
 <?php
+session_start();
+
+
+?>
+
+<?php
 $title = 'Home';
 include 'includes/beginning.php';
 include 'includes/nav.php';
 ?>
+
+
 
 
 
