@@ -409,7 +409,7 @@ if (isset($_POST['submit'])) {
     $password_hashed = sha1($password1);
 
     $sql = "insert into users (role,first_name,middle_name,last_name,id_number,mobile_number,birthdate,gender,username,email,address1,address2,country,zipcode,city,degree,major,gpa,gpa_from,cv,id_photo,avatar,degree_photo,password,account_create_date,account_create_time) 
-    values('user','$first_name','$middle_name','$last_name','$id_number','$mobile_number','$birthdate','$gender','$username','$email','$address1','$address2','المملكة العربية السعودية','$zipcode','$city','$degree','$major','$gpa','$gpa_from','$cv_path','$id_photo_path','$avatar_path','$degree_photo_path','$password_hashed','$date','$hours')";
+    values('user','$first_name','$middle_name','$last_name','$id_number','$mobile_number','$birthdate','$gender','$username','$email','$address1','$address2','المملكة العربية السعودية','$zipcode','$city','$degree','$major','$gpa','$gpa_from','$cv_name','$id_photo_name','$avatar_name','$degree_photo_name','$password_hashed','$date','$hours')";
     $query = mysqli_query($conn, $sql);
 
     if ($query) {

@@ -48,6 +48,11 @@ $cr_photo_type_msg = "";
 $cr_photo_size_msg = "";
 $cr_photo_type_check = 0;
 
+$logo_empty_msg = "";
+$logo_type_msg = "";
+$logo_size_msg = "";
+$logo_type_check = 0;
+
 
 if (isset($_POST['submit'])) {
 
@@ -156,6 +161,28 @@ if (isset($_POST['submit'])) {
     $username_specialchars_msg = 'يجب أن يكون اسم المستخدم لا يحتوي على رموز خاصة';
   }
 
+  /// ----------------------------------------------------------------
+
+  if (empty($_FILES["logo"]["name"])) {
+    $logo_empty_msg = 'يرجى إرفاق شعار المنشأة' . '<br>';
+  }
+
+  $logo_location = '../uploads/logo/';
+  $logo_name = time() . '_' . basename($_FILES["logo"]["name"]);
+  $logo_path = $logo_location . $logo_name;
+  $logo_size = $_FILES["logo"]["size"];
+  $logo_type = strtolower(basename($_FILES["logo"]["type"]));
+
+  if ($logo_size > 200000000) {
+    $logo_size_msg = 'حجم الملف يجب ان يكون أقل من 200 mb' . '<br>';
+  }
+
+  if ($logo_type != 'png' && $logo_type != 'jpeg' && $logo_type != 'jpg' && $logo_type != 'gif') {
+    $logo_type_msg = 'الملف المرفق يجب أن يكون png,jpeg,jpg,gif';
+    $logo_type_check = 1;
+  }
+
+  // --------------------------------
 
   if (empty($_FILES["cr_photo"]["name"])) {
     $cr_photo_empty_msg = 'يرجى إرفاق السجل التجاري' . '<br>';
@@ -175,6 +202,8 @@ if (isset($_POST['submit'])) {
     $cr_photo_type_msg = 'الملف المرفق يجب أن يكون pdf';
     $cr_photo_type_check = 1;
   }
+
+
 
   include '../database/conn.php';
 
@@ -255,7 +284,12 @@ if (isset($_POST['submit'])) {
     $cr_photo_empty_msg == "" &&
     $cr_photo_type_msg == "" &&
     $cr_photo_type_check == 0 &&
-    $cr_photo_size_msg < 200000000
+    $cr_photo_size_msg < 200000000 &&
+
+    $logo_empty_msg == "" &&
+    $logo_type_msg == "" &&
+    $logo_type_check == 0 &&
+    $logo_size_msg < 200000000
 
 
 
@@ -266,12 +300,12 @@ if (isset($_POST['submit'])) {
     include '../database/conn.php';
 
     move_uploaded_file($_FILES["cr_photo"]["tmp_name"], $cr_photo_path);
-
+    move_uploaded_file($_FILES["logo"]["tmp_name"], $logo_path);
 
     $password_hashed = sha1($password1);
 
-    $sql = "insert into facilities (role,name,number,type,mobile_number,phone_number,username,email,address1,address2,country,zipcode,city,employee_count,income,cr_photo,password,account_create_date,account_create_time) 
-    values('facility','$name','$number','$type','$mobile_number','$phone_number','$username','$email','$address1','$address2','المملكة العربية السعودية','$zipcode','$city','$employee_count','$income','$cr_photo_path','$password_hashed','$date','$hours')";
+    $sql = "insert into facilities (role,name,number,type,mobile_number,phone_number,username,email,address1,address2,country,zipcode,city,employee_count,income,cr_photo,logo,password,account_create_date,account_create_time) 
+    values('facility','$name','$number','$type','$mobile_number','$phone_number','$username','$email','$address1','$address2','المملكة العربية السعودية','$zipcode','$city','$employee_count','$income','$cr_photo_name','$logo_name','$password_hashed','$date','$hours')";
     $query = mysqli_query($conn, $sql);
 
     if ($query) {
@@ -456,9 +490,9 @@ if (isset($_POST['submit'])) {
             <div class="row g-3">
               <h4 class="text-start fw-bold">المستندات: </h4>
 
-              <div class="text-start mb-3 col-md-12">
+              <div class="text-start mb-3 col-md-6">
                 <label for="cr_photo" class="fw-bold ">أرفاق صورة من السجل التجاري للمنشأة:</label>
-                <input name="cr_photo" type="file" id="cr_photo" class=" form-control">
+                <input name="cr_photo" type="file" id="cr_photo" class=" form-control" accept=".pdf">
                 <div class="text-start">
                   <p class="text-danger"><?php echo $cr_photo_empty_msg; ?></p>
                 </div>
@@ -467,6 +501,20 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="text-start">
                   <p class="text-danger"><?php echo  $cr_photo_size_msg; ?></p>
+                </div>
+              </div>
+
+              <div class="text-start mb-3 col-md-6">
+                <label for="logo" class="fw-bold ">أرفاق شعار المنشأة:</label>
+                <input name="logo" type="file" id="logo" class=" form-control" accept="image/gif, image/png, image/jpg, image/jpeg">
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $logo_empty_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo $logo_type_msg; ?></p>
+                </div>
+                <div class="text-start">
+                  <p class="text-danger"><?php echo  $logo_size_msg; ?></p>
                 </div>
               </div>
 
