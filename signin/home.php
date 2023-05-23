@@ -27,10 +27,10 @@ include '../includes/nav.php';
       <div class="col-md-6 p-4">
         <div class="card">
           <div class="card-body">
-            <img class="img-fluid w-50" src="images/other/enterprise.png" alt="">
+            <img class="img-fluid w-50" src="images/other/facilities.png" alt="">
             <h2 class="fw-bold">المنشآت</h2>
             <div class="p-2">
-              <a href="signin/enterprise.php"><button type="button" class="btn btn-primary text-white fw-bold btn-lg">دخول كحساب منشأة</button></a>
+              <a href="signin/facilities.php"><button type="button" class="btn btn-primary text-white fw-bold btn-lg">دخول كحساب منشأة</button></a>
 
             </div>
           </div>

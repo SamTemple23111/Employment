@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['role'] = $fetch['role'];
       $_SESSION['first_name'] = $fetch['first_name'];
       // $_SESSION['logo'] = $fetch['logo'];
-      header('location:index.php');
+      header('location: ../dashboard/user/home.php');
     } else {
       $invaild = '<div class="alert alert-danger" role="alert">البريد الإلكتروني أو اسم المستخدم أو كلمة المرور غير صالحة. حاول مرة اخرى.</div>';
     }
