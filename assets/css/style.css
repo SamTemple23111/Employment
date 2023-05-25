@@ -99,6 +99,7 @@ section.card-animation .card:hover {
 
 section.card-animation .card {
   transition: transform 0.2s ease;
+  
 }
 
 form.background {

@@ -9,7 +9,6 @@ ini_set('display_errors', 0);
 $id = $_SESSION['id'];
 $first_name = $_SESSION['first_name'];
 $name = $_SESSION['name'];
-$first_name = $_SESSION['first_name'];
 $role = $_SESSION['role'];
 
 
@@ -45,20 +44,23 @@ $role = $_SESSION['role'];
                     <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $first_name <img src='https://github.com/mdo.png' alt='mdo' width='32' height='32' class='rounded-circle'>
                     </a>
                     <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
-                        <li><a class='dropdown-item' href='database/logout'>تسجيل خروج</a></li>
+                        <li><a class='dropdown-item' href='dashboard/user/home'>لوحة التحكم</a></li>
+                        <li><a class='dropdown-item' href='database/logout'><span class='badge bg-danger'>تسجيل خروج</span></a></li>
                     </ul>
                 </div>";
                 }
+
                 if ($role == 'facility') {
-                    echo '                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-light text-decoration-none dropdown-toggle dropend" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    echo "                <div class='dropdown text-end'>
+                    <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $name <img src='https://github.com/mdo.png' alt='mdo' width='32' height='32' class='rounded-circle'>
                     </a>
-                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-                        <li><a class="dropdown-item" href="database/logout">تسجيل خروج</a></li>
+                    <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
+                        <li><a class='dropdown-item' href='dashboard/facility/home'>لوحة التحكم</a></li>
+                        <li><a class='dropdown-item' href='database/logout'><span class='badge bg-danger'>تسجيل خروج</span></a></li>
                     </ul>
-                </div>';
+                </div>";
                 }
+
 
                 if ($role !== 'facility' && $role !== 'user') {
                     echo '                <li class="nav-item">

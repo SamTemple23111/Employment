@@ -1,10 +1,22 @@
 <?php
+session_start();
 $title = 'Signup - User';
 include '../includes/beginning.php';
-?>
+
+include "../includes/sessions.php";
+
+ini_set('error_reporting', 0);
+ini_set('display_errors', 0);
+
+if (isset($id)) {
+  header('location: ../redirect/already_signin.php');
+} else {
+}
 
 
-<?php
+
+
+
 
 // متغيرات اذا كانت الحقول فاضية
 $first_name_empty_msg = "";
@@ -181,9 +193,9 @@ if (isset($_POST['submit'])) {
     $password_mismatched_msg = 'كلمات المرور غير متطابقة';
   }
 
-  $uppercase    = preg_match('@[A-Z]@', $password1);
-  $lowercase    = preg_match('@[a-z]@', $password1);
-  $number       = preg_match('@[0-9]@', $password1);
+  $uppercase = preg_match('@[A-Z]@', $password1);
+  $lowercase = preg_match('@[a-z]@', $password1);
+  $number = preg_match('@[0-9]@', $password1);
   $specialchars = preg_match('@[^\w]@', $password1);
   $specialchars_username = preg_match('@[^\w]@', $username);
 
@@ -202,11 +214,9 @@ if (isset($_POST['submit'])) {
   if (strlen($password1) < 8) {
     $password_strlen_msg = 'يجب أن لا يقل طول كلمة المرور عن 8 خانات';
   }
-
   if (strlen($username) < 3) {
     $username_len3_msg = 'يجب أن يكون اسم المستخدم 3 أحرف على الأقل';
   }
-
   if (strlen($username) > 15) {
     $username_len15_msg = 'يجب أن يكون طول اسم المستخدم كحد أقصى 15 رقم';
   }
@@ -373,54 +383,23 @@ if (isset($_POST['submit'])) {
     $cv_type_msg == "" &&
     $cv_size_msg == "" &&
     $cv_type_check == 0 &&
-    $cv_size < 200000000 &&
-
-    $id_photo_empty_msg == "" &&
-    $id_photo_type_msg == "" &&
-    $id_photo_size_msg == "" &&
-    $id_photo_type_check == 0 &&
-    $id_photo_size < 200000000 &&
-
-    $avatar_empty_msg == "" &&
-    $avatar_type_msg == "" &&
-    $avatar_size_msg == "" &&
-    $avatar_type_check == 0 &&
-    $avatar_size < 200000000 &&
-
-    $degree_photo_empty_msg == "" &&
-    $degree_photo_type_msg == "" &&
-    $degree_photo_size_msg == "" &&
-    $degree_photo_type_check == 0 &&
-    $degree_photo_size < 200000000
-
-
-
-
+    $cv_size < 200000000 && $id_photo_empty_msg == "" && $id_photo_type_msg == "" && $id_photo_size_msg == "" && $id_photo_type_check == 0 && $id_photo_size < 200000000 && $avatar_empty_msg == "" && $avatar_type_msg == "" && $avatar_size_msg == "" && $avatar_type_check == 0 && $avatar_size < 200000000 && $degree_photo_empty_msg == "" && $degree_photo_type_msg == "" && $degree_photo_size_msg == "" && $degree_photo_type_check == 0 && $degree_photo_size < 200000000
   ) {
-
     include '../database/conn.php';
-
     move_uploaded_file($_FILES["cv"]["tmp_name"], $cv_path);
     move_uploaded_file($_FILES["id_photo"]["tmp_name"], $id_photo_path);
     move_uploaded_file($_FILES["avatar"]["tmp_name"], $avatar_path);
     move_uploaded_file($_FILES["degree_photo"]["tmp_name"], $degree_photo_path);
-
-
     $password_hashed = sha1($password1);
-
     $sql = "insert into users (role,first_name,middle_name,last_name,id_number,mobile_number,birthdate,gender,username,email,address1,address2,country,zipcode,city,degree,major,gpa,gpa_from,cv,id_photo,avatar,degree_photo,password,account_create_date,account_create_time) 
     values('user','$first_name','$middle_name','$last_name','$id_number','$mobile_number','$birthdate','$gender','$username','$email','$address1','$address2','المملكة العربية السعودية','$zipcode','$city','$degree','$major','$gpa','$gpa_from','$cv_name','$id_photo_name','$avatar_name','$degree_photo_name','$password_hashed','$date','$hours')";
     $query = mysqli_query($conn, $sql);
-
     if ($query) {
       header('location:login.php');
       echo 'You are successfully logged in!';
     }
   }
-}
-
-
-?>
+} ?>
 
 <section>
   <div class="container text-center">

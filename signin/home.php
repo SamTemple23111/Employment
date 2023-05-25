@@ -1,7 +1,20 @@
 <?php
+session_start();
 $title = 'Signin';
 include '../includes/beginning.php';
 include '../includes/nav.php';
+
+
+include "../includes/sessions.php";
+
+ini_set('error_reporting', 0);
+ini_set('display_errors', 0);
+
+if (isset($id)) {
+  header('location: ../redirect/already_signin.php');
+} else {
+}
+
 ?>
 
 <section class="card-animation align-items-center justify-content-center d-flex min-vh-100">

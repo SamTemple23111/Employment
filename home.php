@@ -121,8 +121,8 @@ include 'includes/nav.php';
 
 </section>
 
-<section class="card-animation style=" background-color: #f5f5f5">
-  <div class="container marketing">
+<section class="card-animation style=" style="background-color: #f5f5f5">
+  <div class=" container marketing">
     <div class="row featurette py-5">
       <div class="col-md-7">
         <h2 class="featurette-heading fw-bold">احصائيات</span></h2>

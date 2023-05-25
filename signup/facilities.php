@@ -1,6 +1,18 @@
 <?php
+session_start();
 $title = 'Signup - Facilities';
 include '../includes/beginning.php';
+
+include "../includes/sessions.php";
+
+ini_set('error_reporting', 0);
+ini_set('display_errors', 0);
+
+if (isset($id)) {
+  header('location: ../redirect/already_signin.php');
+} else {
+}
+
 ?>
 
 

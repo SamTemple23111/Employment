@@ -1,7 +1,17 @@
 <?php
+session_start();
 $title = 'Signin - User';
 include '../includes/beginning.php';
-session_start();
+
+include "../includes/sessions.php";
+
+ini_set('error_reporting', 0);
+ini_set('display_errors', 0);
+
+if (isset($id)) {
+  header('location: ../redirect/already_signin.php');
+} else {
+}
 
 
 
@@ -38,6 +48,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['id'] = $fetch['id'];
       $_SESSION['role'] = $fetch['role'];
       $_SESSION['first_name'] = $fetch['first_name'];
+      $_SESSION['last_name'] = $fetch['last_name'];
       // $_SESSION['logo'] = $fetch['logo'];
       header('location: ../dashboard/user/home.php');
     } else {

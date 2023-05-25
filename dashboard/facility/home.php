@@ -1,10 +1,34 @@
+<?php
+
+
+
+
+session_start();
+
+ini_set('error_reporting', 0);
+ini_set('display_errors', 0);
+
+
+$id = $_SESSION['id'];
+$name = $_SESSION['name'];
+$role = $_SESSION['role'];
+
+if (isset($id) && $role == 'facility') {
+} else {
+
+    header('location: ../../redirect/session_block.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ar"">
 
-    <head>
+<head>
+    
     <!-- Title & base link -->
-    <title>Employment | Dashboard</title>
-    <base href=" https://emp-cti.com/dashboard">
+    <title> Home | Employment</title>
+    <base href=" http://localhost/">
 <!-- Meta tags -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -12,68 +36,86 @@
 <!-- Website Favicon ico -->
 <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
 <!-- Styles: Font-aswsome, bootstrap5 & main style -->
-<link rel="stylesheet" href="assets/fontawesome/css/all.css" />
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.rtl.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.rtl.min.css" integrity="sha384-T5m5WERuXcjgzF8DAb7tRkByEZQGcpraRTinjpywg37AO96WoYN9+hrhDVoM6CaT" crossorigin="anonymous">
+<link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 
 
 
 <body>
 
-    <div class="container-fluid">
-        <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light text-dark">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-100">
-                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class="fs-2 d-none d-sm-inline">لوحة التحكم</span>
-                    </a>
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-3 fa-solid fa-file-signature" style="color: #3e3e3e"></i> <span class="ms-1 d-none d-sm-inline text-dark fw-bold">طلبات التوظيف</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-3 fa-solid fa-address-card" style="color: #3e3e3e"></i> <span class="ms-1 d-none d-sm-inline text-dark fw-bold">معلوماتي</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                    <hr>
-                    <div class="dropdown pb-4">
-                        <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                            <span class="d-none d-sm-inline mx-1">loser</span>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md py-4 justify-content-center ">
+        <div class="container">
+            <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+                <ul class="navbar-nav w-100 justify-content-center">
+                    <div class='dropdown text-end'>
+                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> <?php echo $name ?> <img src='https://github.com/mdo.png' alt='mdo' width='32' height='32' class='rounded-circle'>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
+                            <li><a class='dropdown-item' href='database/logout'><span class='badge bg-danger'>تسجيل خروج</span></a></li>
                         </ul>
                     </div>
-                </div>
-            </div>
-            <div class="col py-5 px-5">
-                <h3>Left Sidebar with Submenus</h3>
-                <p class="lead">
-                    An example 2-level sidebar with collasible menu items. The menu functions like an "accordion" where only a single
-                    menu is be open at a time. While the sidebar itself is not toggle-able, it does responsively shrink in width on smaller screens.</p>
-                <ul class="list-unstyled">
-                    <li>
-                        <h5>Responsive</h5> shrinks in width, hides text labels and collapses to icons only on mobile
-                    </li>
                 </ul>
+
             </div>
         </div>
-    </div>
+    </nav>
 
-</body>
+    <section class="card-animation">
 
-</html>
+
+        <!-- vh-100 here-->
+        <div class="d-flex align-items-center justify-content-center vh-100">
+
+            <div class="row text-center d-flex align-items-stretch">
+
+                <div class="col-md-6 col-12 mb-2">
+                    <a href="dashboard/facility/create_ads" class="text-decoration-none">
+                        <div class="card testimonial-card ">
+                            <div class="avatar mx-auto bg-white">
+                                <i class="fa-solid fa-circle-plus mt-4 fa-4x" style="color: #2B4177"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="text-decoration-none fw-bold">إنشاء إعلان توظيف</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-12 mb-2">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card testimonial-card ">
+                            <div class="avatar mx-auto bg-white">
+                                <i class="fa-solid fa-users mt-4 fa-4x" style="color: #007078"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="text-decoration-none fw-bold">طلبات التوظيف</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-12 col-12 mb-2">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card testimonial-card ">
+                            <div class="avatar mx-auto bg-white">
+                                <i class="fa-solid fa-address-card mt-4 fa-4x" style="color: #420078"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="text-decoration-none fw-bold">معلومات المنشأة</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+    <?php include '../../includes/end.php'; ?>
