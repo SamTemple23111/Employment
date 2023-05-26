@@ -48,7 +48,30 @@ if (isset($_POST['submit'])) {
       $_SESSION['id'] = $fetch['id'];
       $_SESSION['role'] = $fetch['role'];
       $_SESSION['first_name'] = $fetch['first_name'];
+      $_SESSION['middle_name'] = $fetch['middle_name'];
       $_SESSION['last_name'] = $fetch['last_name'];
+      $_SESSION['id_number'] = $fetch['id_number'];
+      $_SESSION['mobile_number'] = $fetch['mobile_number'];
+      $_SESSION['birthdate'] = $fetch['birthdate'];
+      $_SESSION['gender'] = $fetch['gender'];
+      $_SESSION['username'] = $fetch['username'];
+      $_SESSION['email'] = $fetch['email'];
+      $_SESSION['address1'] = $fetch['address1'];
+      $_SESSION['address2'] = $fetch['address2'];
+      $_SESSION['country'] = $fetch['country'];
+      $_SESSION['zipcode'] = $fetch['zipcode'];
+
+      $_SESSION['city'] = $fetch['city'];
+      $_SESSION['degree'] = $fetch['degree'];
+      $_SESSION['major'] = $fetch['major'];
+      $_SESSION['gpa'] = $fetch['gpa'];
+      $_SESSION['gpa_from'] = $fetch['gpa_from'];
+      $_SESSION['cv'] = $fetch['cv'];
+      $_SESSION['id_photo'] = $fetch['id_photo'];
+      $_SESSION['avatar'] = $fetch['avatar'];
+      $_SESSION['degree_photo'] = $fetch['degree_photo'];
+      $_SESSION['account_create_date'] = $fetch['account_create_date'];
+      $_SESSION['account_create_time'] = $fetch['account_create_time'];
       // $_SESSION['logo'] = $fetch['logo'];
       header('location: ../dashboard/user/home.php');
     } else {

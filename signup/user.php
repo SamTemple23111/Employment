@@ -186,6 +186,7 @@ if (isset($_POST['submit'])) {
 
   $password1 = $_POST['password1'];
   $password2 = $_POST['password2'];
+  date_default_timezone_set("Asia/Riyadh");
   $date = date("Y/m/d");
   $hours = date("h:i:s a");
 

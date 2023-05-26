@@ -19,7 +19,7 @@ if (isset($id)) {
 <?php
 
 $name_empty_msg = "";
-$number_empty_msg = "";
+$facility_number_empty_msg = "";
 $type_empty_msg = "";
 $mobile_number_empty_msg = "";
 $phone_number_empty_msg = "";
@@ -71,8 +71,8 @@ if (isset($_POST['submit'])) {
   if (empty($_POST['name'])) {
     $name_empty_msg = "الرجاء ادخل اسم المنشأة";
   }
-  if (empty($_POST['number'])) {
-    $number_empty_msg = "الرجاء ادخال رقم المنشأة";
+  if (empty($_POST['facility_number'])) {
+    $facility_number_empty_msg = "الرجاء ادخال رقم المنشأة";
   }
   if (($_POST['type'] == "null")) {
     $type_empty_msg = "الرجاء ادخال نوع المنشأة";
@@ -116,7 +116,7 @@ if (isset($_POST['submit'])) {
   }
 
   $name = $_POST['name'];
-  $number = $_POST['number'];
+  $facility_number = $_POST['facility_number'];
   $type = $_POST['type'];
   $mobile_number = $_POST['mobile_number'];
   $phone_number = $_POST['phone_number'];
@@ -132,6 +132,7 @@ if (isset($_POST['submit'])) {
 
   $password1 = $_POST['password1'];
   $password2 = $_POST['password2'];
+  date_default_timezone_set("Asia/Riyadh");
   $date = date("Y/m/d");
   $hours = date("h:i:s a");
 
@@ -237,10 +238,10 @@ if (isset($_POST['submit'])) {
     $email_duplicate_msg = "البريد الالكتروني مسجل مسبقًا";
   }
 
-  $query_check_number = "select * from facilities where number='$number'";
-  $query = mysqli_query($conn, $query_check_number);
+  $query_check_facility_number = "select * from facilities where facility_number='$facility_number'";
+  $query = mysqli_query($conn, $query_check_facility_number);
   if (mysqli_num_rows($query) > 0) {
-    $number_duplicate_msg = "رقم الهوية مسجل مسبقًا";
+    $facility_number_duplicate_msg = "رقم المنشأة مسجل مسبقًا";
   }
 
   $query_check_mobile_number = "select * from facilities where mobile_number='$mobile_number'";
@@ -258,7 +259,7 @@ if (isset($_POST['submit'])) {
   if (
 
     $name_empty_msg == "" &&
-    $number_empty_msg == "" &&
+    $facility_number_empty_msg == "" &&
     $type_empty_msg == "" &&
     $mobile_number_empty_msg == "" &&
     $phone_number_empty_msg == "" &&
@@ -288,7 +289,7 @@ if (isset($_POST['submit'])) {
 
     $username_duplicate_msg == "" &&
     $email_duplicate_msg == "" &&
-    $number_duplicate_msg == "" &&
+    $facility_number_duplicate_msg == "" &&
     $mobile_number_duplicate_msg == "" &&
     $phone_number_duplicate_msg == "" &&
 
@@ -316,8 +317,8 @@ if (isset($_POST['submit'])) {
 
     $password_hashed = sha1($password1);
 
-    $sql = "insert into facilities (role,name,number,type,mobile_number,phone_number,username,email,address1,address2,country,zipcode,city,employee_count,income,cr_photo,logo,password,account_create_date,account_create_time) 
-    values('facility','$name','$number','$type','$mobile_number','$phone_number','$username','$email','$address1','$address2','المملكة العربية السعودية','$zipcode','$city','$employee_count','$income','$cr_photo_name','$logo_name','$password_hashed','$date','$hours')";
+    $sql = "insert into facilities (role,name,facility_number,type,mobile_number,phone_number,username,email,address1,address2,country,zipcode,city,employee_count,income,cr_photo,logo,password,account_create_date,account_create_time) 
+    values('facility','$name','$facility_number','$type','$mobile_number','$phone_number','$username','$email','$address1','$address2','المملكة العربية السعودية','$zipcode','$city','$employee_count','$income','$cr_photo_name','$logo_name','$password_hashed','$date','$hours')";
     $query = mysqli_query($conn, $sql);
 
     if ($query) {
@@ -358,13 +359,13 @@ if (isset($_POST['submit'])) {
               </div>
 
               <div class="form-floating mb-3 col-md-4">
-                <input name="number" type="text" class="form-control rounded-3" placeholder="رقم المنشأة">
+                <input name="facility_number" type="text" class="form-control rounded-3" placeholder="رقم المنشأة">
                 <label>رقم المنشأة</label>
                 <div class="text-start">
-                  <p class="text-danger"><?php echo $number_empty_msg ?></p>
+                  <p class="text-danger"><?php echo $facility_number_empty_msg ?></p>
                 </div>
                 <div class="text-start">
-                  <p class="text-danger"><?php echo $number_duplicate_msg ?></p>
+                  <p class="text-danger"><?php echo $facility_number_duplicate_msg ?></p>
                 </div>
               </div>
 

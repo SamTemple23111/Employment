@@ -84,7 +84,7 @@ if (isset($id) && $role == 'user') {
                 </div>
 
                 <div class="col-md-6 col-12 mb-2">
-                    <a href="#" class="text-decoration-none">
+                    <a href="dashboard/user/apply_status" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
                                 <i class="fa-solid fa-square-poll-vertical mt-4 fa-4x" style="color: #007078"></i>

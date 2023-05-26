@@ -3,15 +3,12 @@
 
 
 
+
+
+
 session_start();
 
-
-
-
-$id = $_SESSION['id'];
-$first_name = $_SESSION['first_name'];
-$last_name = $_SESSION['last_name'];
-$role = $_SESSION['role'];
+include '../../includes/sessions.php';
 
 if (isset($id) && $role == 'user') {
 } else {
@@ -68,9 +65,11 @@ if (isset($id) && $role == 'user') {
                 <div class="p-3"></div>
                 <?php
                 include '../../database/conn.php';
-                $sql = "SELECT id_request,name,ads_title,ads_major,ads_description,ads_created_date,ads_created_time FROM facilities_request";
+                $sql = "SELECT id_request,name,ads_title,ads_major,ads_description,ads_created_date,ads_created_time,id_fk FROM facilities_request";
                 $query = mysqli_query($conn, $sql);
                 ?>
+
+
 
                 <?php
                 while ($row = mysqli_fetch_row($query)) {
@@ -94,8 +93,8 @@ if (isset($id) && $role == 'user') {
 
                                 <img src="https://teleworks.sa/wp-content/themes/understrap-child/images/resort.svg" class="rounded-circle" alt="">
                             </div>
-                            <div class="py-2">
-                                <button type="button" class="btn btn-primary sign-in">التقديم الآن</button>
+                            <div class="py-2"> 
+                                <a href="dashboard/user/apply.php?$id_request=' . $row[0] . '&$facility_id=' . $row[7] . '&$name=' . $row[1] . '&$id_fk=' . $id . '&$role=' . $role . '&$first_name=' . $first_name . '&$middle_name=' . $middle_name . '&$last_name=' . $last_name . '&$id_number=' . $id_number . '&$mobile_number=' . $mobile_number . '&$birthdate=' . $birthdate . '&$gender=' . $gender . '&$username=' . $username . '&$email=' . $email . '&$address1=' . $address2 . '&$address2=' . $country . '&$country=' . $id . '&$zipcode=' . $zipcode . '&$city=' . $city . '&$degree=' . $degree . '&$major=' . $major . '&$gpa=' . $gpa . '&$gpa_from=' . $gpa_from . '&$cv=' . $cv . '&$id_photo=' . $id_photo . '&$avatar=' . $avatar . '&$degree_photo=' . $degree_photo . '&$account_create_date=' . $account_create_date . '&$account_create_time=' . $account_create_time . '"><button type="button" class="btn btn-primary sign-in">التقديم الآن</button></a>
                             </div>
                         </div>
                         <p class="text-muted mb-1"><small>تاريخ النشر: ' . $row[5] . ' </small></p>

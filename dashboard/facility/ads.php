@@ -82,7 +82,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css
                                 <img src="https://teleworks.sa/wp-content/themes/understrap-child/images/resort.svg" class="rounded-circle" alt="">
                             </div>
                                      <div class="py-2">
-                                <a href="dashboard/facility/delete.php?$id_request=' . $row[0] . '"><button type="button" class="btn btn-danger sign-in">حذف</button></a>
+                                <a href="dashboard/facility/delete.php?$id_request='.$row[0].'"><button type="button" class="btn btn-danger sign-in">حذف</button></a>
                             </div>
                         </div>
                         <p class="text-muted mb-1"><small>تاريخ النشر: ' . $row[5] . ' </small></p>
