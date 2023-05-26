@@ -65,10 +65,10 @@ if (isset($id) && $role == 'user') {
         <div class="row">
             <div class="col">
 
-                <div class="p-5"></div>
+                <div class="p-3"></div>
                 <?php
                 include '../../database/conn.php';
-                $sql = "SELECT id_request,name,ads_title,ads_description,ads_created_date,ads_created_time FROM facilities_request";
+                $sql = "SELECT id_request,name,ads_title,ads_major,ads_description,ads_created_date,ads_created_time FROM facilities_request";
                 $query = mysqli_query($conn, $sql);
                 ?>
 
@@ -77,7 +77,7 @@ if (isset($id) && $role == 'user') {
                     $query1 = mysqli_query($conn, $sql);
                     $row1 = mysqli_fetch_assoc($query1);
                     echo '                
-                    <section class="card-animation">
+                    <section class="card-animation py-3">
                     <div class="mx-auto card col-7 p-3 ">
                         <div class="card-body">
                             <div class="d-md-flex">
@@ -85,8 +85,10 @@ if (isset($id) && $role == 'user') {
                                     <a href="https://teleworks.sa/ar/job/specialist-marketing-1683804790" data-step="5" data-position="right" data-intro=" عند الدخول على صفحة البحث عن وظائف،تظهر قائمة الوظائف المتاحة،ويمكن للمستخدم البحث على مسمى الوظيفة">
                                         <h3 class="card-title d-inline-block secondary my-0 py-0">' . $row[2] . '</h3>
                                     </a>
-                                    <p class="mb-1"><span>اسم الشركة: ' . $row[1] . '</span></p>
-                                    <p class="mb-1 ">وصف الوظيفة: <br>' . $row[3] . '</p>
+                                    <h5 class="mb-1"><span><strong>اسم المنشأة: </strong>' . $row[1] . '</span></h5>
+                                    <p class="mb-1 "><strong>التخصص: </strong>' . $row[3] . '</p>
+                                    <p class="mb-1 "><strong>وصف الوظيفة:</strong> <br>' . $row[4] . '</p>
+                                    
                                     
                                 </div>
 
@@ -96,8 +98,8 @@ if (isset($id) && $role == 'user') {
                                 <button type="button" class="btn btn-primary sign-in">التقديم الآن</button>
                             </div>
                         </div>
-                        <p class="text-muted mb-1"><small>تاريخ النشر: ' . $row[4] . ' </small></p>
-                        <p class="text-muted mb-1"><small>وقت النشر: ' . $row[5] . '</small></p>
+                        <p class="text-muted mb-1"><small>تاريخ النشر: ' . $row[5] . ' </small></p>
+                        <p class="text-muted mb-1"><small>وقت النشر: ' . $row[6] . '</small></p>
                         
                     </div>
 
@@ -111,9 +113,10 @@ if (isset($id) && $role == 'user') {
 
 
 
-
+                <div class="p-3"></div>
 
 
     </main>
 
+    <?php include '../../includes/footer.php'; ?>
     <?php include '../../includes/end.php'; ?>

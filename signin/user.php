@@ -81,6 +81,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-floating mb-3">
               <input name="password" type="password" class="form-control rounded-3" placeholder="Password">
+
               <label>كلمة المرور</label>
               <p class="text-danger"><?php echo $password_empty_msg ?></p>
             </div>

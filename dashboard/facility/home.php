@@ -83,6 +83,19 @@ if (isset($id) && $role == 'facility') {
                 </div>
 
                 <div class="col-md-6 col-12 mb-2">
+                    <a href="dashboard/facility/ads" class="text-decoration-none">
+                        <div class="card testimonial-card ">
+                            <div class="avatar mx-auto bg-white">
+                                <i class="fa-solid fa-list-ul mt-4 fa-4x" style="color: #2F5299"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="text-decoration-none fw-bold">الإعلانات</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-12 mb-2">
                     <a href="#" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
@@ -95,7 +108,7 @@ if (isset($id) && $role == 'facility') {
                     </a>
                 </div>
 
-                <div class="col-md-12 col-12 mb-2">
+                <div class="col-md-6 col-12 mb-2">
                     <a href="#" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
