@@ -6,10 +6,9 @@ ini_set('error_reporting', 0);
 ini_set('display_errors', 0);
 
 
-$id = $_SESSION['id'];
-$first_name = $_SESSION['first_name'];
-$name = $_SESSION['name'];
-$role = $_SESSION['role'];
+                session_start();
+
+                include 'includes/sessions.php';
 
 
 ?>
@@ -41,7 +40,7 @@ $role = $_SESSION['role'];
 
                 if ($role == 'user') {
                     echo "                <div class='dropdown text-end'>
-                    <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $first_name <img src='https://github.com/mdo.png' alt='mdo' width='32' height='32' class='rounded-circle'>
+                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'>$first_name $last_name <img src='uploads/avatar/$avatar ' alt='$username avatar' width='32' height='32' class='rounded-circle'>
                     </a>
                     <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
                         <li><a class='dropdown-item' href='dashboard/user/home'>لوحة التحكم</a></li>
@@ -52,7 +51,7 @@ $role = $_SESSION['role'];
 
                 if ($role == 'facility') {
                     echo "                <div class='dropdown text-end'>
-                    <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $name <img src='https://github.com/mdo.png' alt='mdo' width='32' height='32' class='rounded-circle'>
+                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $name <img src='uploads/logo/$logo' alt='$username logo' width='32' height='32' class='rounded-circle'>
                     </a>
                     <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
                         <li><a class='dropdown-item' href='dashboard/facility/home'>لوحة التحكم</a></li>
@@ -61,8 +60,19 @@ $role = $_SESSION['role'];
                 </div>";
                 }
 
+                if ($username == 'admin') {
+                    echo "                <div class='dropdown text-end'>
+                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $username <img src='images/avatars/avatar.png' alt='$username logo' width='32' height='32' class='rounded-circle'>
+                    </a>
+                    <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
+                        <li><a class='dropdown-item' href='dashboard/admin/home'>لوحة التحكم</a></li>
+                        <li><a class='dropdown-item' href='database/logout'><span class='badge bg-danger'>تسجيل خروج</span></a></li>
+                    </ul>
+                </div>";
+                }
 
-                if ($role !== 'facility' && $role !== 'user') {
+
+                if ($role !== 'facility' && $role !== 'user' && $username !== 'admin') {
                     echo '                <li class="nav-item">
                     <a href="signup/home.php"><button type="button" class="btn btn-secondary me-3 sign-in">تسجيل</button></a>
                 </li>

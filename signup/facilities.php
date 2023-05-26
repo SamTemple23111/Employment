@@ -322,7 +322,7 @@ if (isset($_POST['submit'])) {
     $query = mysqli_query($conn, $sql);
 
     if ($query) {
-      header('location:login.php');
+      header('location: ../signin/facility.php');
       echo 'You are successfully logged in!';
     }
   }

@@ -5,14 +5,7 @@
 
 session_start();
 
-ini_set('error_reporting', 0);
-ini_set('display_errors', 0);
-
-
-$id = $_SESSION['id'];
-$first_name = $_SESSION['first_name'];
-$last_name = $_SESSION['last_name'];
-$role = $_SESSION['role'];
+include '../../includes/sessions.php';
 
 if (isset($id) && $role == 'user') {
 } else {
@@ -50,9 +43,10 @@ if (isset($id) && $role == 'user') {
             <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
                 <ul class="navbar-nav w-100 justify-content-center">
                     <div class='dropdown text-end'>
-                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> <?php echo $first_name . " " . $last_name ?> <img src='https://github.com/mdo.png' alt='mdo' width='32' height='32' class='rounded-circle'>
+                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> <?php echo $first_name .  ' '  . $last_name ?> <img src='../../uploads/avatar/<?php echo $avatar ?>' alt='<?php echo $username ?> avatar' width='32' height='32' class='rounded-circle'>
                         </a>
                         <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
+                            <li><a class='dropdown-item' href='../../home'>الصفحة الرئيسية</a></li>
                             <li><a class='dropdown-item' href='database/logout'><span class='badge bg-danger'>تسجيل خروج</span></a></li>
                         </ul>
                     </div>
@@ -62,11 +56,16 @@ if (isset($id) && $role == 'user') {
         </div>
     </nav>
 
+    <div class="py-5 text-center">
+        <h1 class="display-4 fw-bold">لوحة التحكم: </h1>
+        <p class="text-muted lead" id="pra">بإمكانك من هنا عرض الوظائف المقدمة من المنشآت والتقديم عليها بضغطت زر وايضًا عرض حالة التقديم للوظيفة المُقدم لها واخيرا عرض معلومات حسابك الشخصي</p>
+    </div>
+
     <section class="card-animation">
 
 
         <!-- vh-100 here-->
-        <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="d-flex align-items-center justify-content-center">
 
             <div class="row text-center d-flex align-items-stretch">
 
@@ -96,14 +95,26 @@ if (isset($id) && $role == 'user') {
                     </a>
                 </div>
 
-                <div class="col-md-12 col-12 mb-2">
-                    <a href="#" class="text-decoration-none">
+                <div class="col-md-6 col-12 mb-2">
+                    <a href="dashboard/user/information" class=" text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
                                 <i class="fa-solid fa-address-card mt-4 fa-4x" style="color: #420078"></i>
                             </div>
                             <div class="card-body">
-                                <h4 class="text-decoration-none fw-bold">معلومات المنشأة</h4>
+                                <h4 class="text-decoration-none fw-bold">معلومات الحساب</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-12 mb-2">
+                    <a href="../../contact.php" class=" text-decoration-none">
+                        <div class="card testimonial-card ">
+                            <div class="avatar mx-auto bg-white">
+                                <i class="fa-solid fa-phone mt-4 fa-4x" style="color: #891E1E"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="text-decoration-none fw-bold">للتواصل</h4>
                             </div>
                         </div>
                     </a>

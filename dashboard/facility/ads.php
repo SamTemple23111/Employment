@@ -45,9 +45,40 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css
 
 </head>
 
+<nav class="navbar navbar-dark bg-dark navbar-expand-md py-4 justify-content-center ">
+    <div class="container">
+        <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+            <ul class="navbar-nav w-100 justify-content-center">
+                <div class='dropdown text-end'>
+                    <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> <?php echo $name ?> <img src='../../uploads/logo/<?php echo $logo ?>' alt='<?php echo $username ?> avatar' width='32' height='32' class='rounded-circle'>
+                    </a>
+                    <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
+                        <li><a class='dropdown-item' href='../../home'>الصفحة الرئيسية</a></li>
+                        <li><a class='dropdown-item' href='database/logout'><span class='badge bg-danger'>تسجيل خروج</span></a></li>
+                    </ul>
+                </div>
+            </ul>
 
+        </div>
+    </div>
+</nav>
 
-<main class="container">
+<div class="mt-5"></div>
+
+<div class="text-center ">
+    <h1 class="display-4 fw-bold">قائمة الإعلانات: </h1>
+    <p class="text-muted lead" id="pra">هنا سوف تجد جميع إعلانات المنشأة الخاص بكم</p>
+</div>
+<div class="col-md-12 text-center">
+    <a href="dashboard/facility/home">
+        <button type="button" style="background-color: #467499" class="text-white fw-bold justify-content-center btn btn-lg"><i class="fa-solid fa-right-to-bracket"></i> الرجوع إلى الصفحة الرئيسية</button>
+
+    </a>
+</div>
+
+<div class="mt-5"></div>
+
+<main class="container ">
     <div class="row">
         <div class="col">
 
@@ -82,7 +113,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css
                                 <img src="https://teleworks.sa/wp-content/themes/understrap-child/images/resort.svg" class="rounded-circle" alt="">
                             </div>
                                      <div class="py-2">
-                                <a href="dashboard/facility/delete.php?$id_request='.$row[0].'"><button type="button" class="btn btn-danger sign-in">حذف</button></a>
+                                <a href="dashboard/facility/delete.php?$id_request=' . $row[0] . '"><button type="button" class="btn btn-danger sign-in">حذف</button></a>
                             </div>
                         </div>
                         <p class="text-muted mb-1"><small>تاريخ النشر: ' . $row[5] . ' </small></p>

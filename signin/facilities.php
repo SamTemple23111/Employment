@@ -50,6 +50,23 @@ if (isset($_POST['submit'])) {
       $_SESSION['id'] = $fetch['id'];
       $_SESSION['role'] = $fetch['role'];
       $_SESSION['name'] = $fetch['name'];
+      $_SESSION['facility_number'] = $fetch['facility_number'];
+      $_SESSION['type'] = $fetch['type'];
+      $_SESSION['mobile_number'] = $fetch['mobile_number'];
+      $_SESSION['phone_number'] = $fetch['phone_number'];
+      $_SESSION['username'] = $fetch['username'];
+      $_SESSION['email'] = $fetch['email'];
+      $_SESSION['address1'] = $fetch['address1'];
+      $_SESSION['address2'] = $fetch['address2'];
+      $_SESSION['country'] = $fetch['country'];
+      $_SESSION['zipcode'] = $fetch['zipcode'];
+      $_SESSION['city'] = $fetch['city'];
+      $_SESSION['employee_count'] = $fetch['employee_count'];
+      $_SESSION['income'] = $fetch['income'];
+      $_SESSION['cr_photo'] = $fetch['cr_photo'];
+      $_SESSION['logo'] = $fetch['logo'];
+      $_SESSION['account_create_date'] = $fetch['account_create_date'];
+      $_SESSION['account_create_time'] = $fetch['account_create_time'];
       // $_SESSION['logo'] = $fetch['logo'];
       header('location: ../dashboard/facility/home.php');
     } else {

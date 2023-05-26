@@ -1,14 +1,20 @@
 <?php
 
 
-
 ini_set('error_reporting', 0);
 ini_set('display_errors', 0);
 
 
+
 //facility sessions
 $name = $_SESSION['name'];
-
+$facility_number = $_SESSION['facility_number'];
+$type = $_SESSION['type'];
+$phone_number = $_SESSION['phone_number'];
+$employee_count = $_SESSION['employee_count'];
+$income = $_SESSION['income'];
+$cr_photo = $_SESSION['cr_photo'];
+$logo = $_SESSION['logo'];
 // user sessions
 $id = $_SESSION['id'];
 $role = $_SESSION['role'];

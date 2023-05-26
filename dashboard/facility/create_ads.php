@@ -7,9 +7,7 @@ session_start();
 
 
 
-$id = $_SESSION['id'];
-$name = $_SESSION['name'];
-$role = $_SESSION['role'];
+include '../../includes/sessions.php';
 
 if (isset($id) && $role == 'facility') {
 } else {
@@ -96,9 +94,10 @@ if (isset($id) && $role == 'facility') {
             <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
                 <ul class="navbar-nav w-100 justify-content-center">
                     <div class='dropdown text-end'>
-                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> <?php echo $name ?> <img src='https://github.com/mdo.png' alt='mdo' width='32' height='32' class='rounded-circle'>
+                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> <?php echo $name ?> <img src='../../uploads/logo/<?php echo $logo ?>' alt='<?php echo $username ?> avatar' width='32' height='32' class='rounded-circle'>
                         </a>
                         <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
+                            <li><a class='dropdown-item' href='../../home'>الصفحة الرئيسية</a></li>
                             <li><a class='dropdown-item' href='database/logout'><span class='badge bg-danger'>تسجيل خروج</span></a></li>
                         </ul>
                     </div>
@@ -108,7 +107,9 @@ if (isset($id) && $role == 'facility') {
         </div>
     </nav>
 
-    <section class="card-animation">
+
+
+    <section class="card-animation ">
 
 
         <!-- vh-100 here-->

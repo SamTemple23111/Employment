@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 
@@ -9,6 +10,22 @@ session_start();
 $title = 'Home';
 include 'includes/beginning.php';
 include 'includes/nav.php';
+include 'includes/sessions.php';
+include 'database/conn.php';
+
+$sql_users = "SELECT * FROM users";
+$query_users = mysqli_query($conn, $sql_users);
+$rows_users = mysqli_num_rows($query_users);
+
+$sql_facilities = "SELECT * FROM facilities";
+$query_facilities = mysqli_query($conn, $sql_facilities);
+$rows_facilities = mysqli_num_rows($query_facilities);
+
+$sql_facilities_request = "SELECT * FROM facilities_request";
+$query_facilities_request = mysqli_query($conn, $sql_facilities_request);
+$rows_facilities_request = mysqli_num_rows($query_facilities_request);
+
+
 ?>
 
 
@@ -23,7 +40,7 @@ include 'includes/nav.php';
     <div class="row featurette py-5">
       <div class="col-md-6">
         <h2 class="featurette-heading fw-bold">من نحن؟</h2>
-        <p class="lead" id="pra">نحن منصة توظيف تتيح للباحثين عن عمل الإستفادة من منصتنا للبحث عن وظائف بتشى الأنواع وايضًا نتيح للشركات التسجيل معنا لعرض وظائفهم للباحين عن عمل وتسهيل التواصل مابينهم.</p>
+        <p class="lead" id="pra">نحن منصة توظيف تتيح للباحثين عن عمل الإستفادة من منصتنا للبحث عن وظائف بشتى الأنواع وايضًا نتيح للشركات التسجيل معنا لعرض وظائفهم للباحين عن عمل وتسهيل التواصل مابينهم.</p>
       </div>
       <div class="col-md-5">
         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="images/backgrounds/bg-1.png">
@@ -140,8 +157,8 @@ include 'includes/nav.php';
                 <i class="fa-solid fa-building mt-4 fa-4x" style="color: #2B4177"></i>
               </div>
               <div class="card-body">
-                <h4 class="">الشركات</h4>
-                <h2 class="dark-grey-text mt-4">10+</h2>
+                <h4 class="">المنشآت</h4>
+                <h2 class="dark-grey-text mt-4"><?php echo $rows_facilities ?></h2>
               </div>
             </div>
           </div>
@@ -152,8 +169,8 @@ include 'includes/nav.php';
                 <i class="fa-solid fa-file-signature mt-4 fa-4x" style="color: #178573"></i>
               </div>
               <div class="card-body">
-                <h4 class="mb-3">الموظفين</h4>
-                <h2 class="dark-grey-text mt-4">100+</h2>
+                <h4 class="mb-3">عدد الوظائف</h4>
+                <h2 class="dark-grey-text mt-4"><?php echo $rows_facilities_request ?></h2>
               </div>
             </div>
           </div>
@@ -165,7 +182,7 @@ include 'includes/nav.php';
               </div>
               <div class="card-body">
                 <h4 class="mb-3">الباحثين عن عمل</h4>
-                <h2 class="dark-grey-text mt-4">30+</h2>
+                <h2 class="dark-grey-text mt-4"><?php echo $rows_users ?></h2>
               </div>
             </div>
           </div>

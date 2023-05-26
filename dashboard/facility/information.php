@@ -1,4 +1,27 @@
+<?php
+
+
+
+session_start();
+include '../../database/conn.php';
+include '../../includes/sessions.php';
+
+$sql = "select * from facilities where id = $id";
+$query = mysqli_query($conn, $sql);
+$data = mysqli_fetch_array($query);
+
+
+if (isset($id) && $role == 'facility') {
+} else {
+
+    header('location: ../../redirect/session_block.php');
+}
+
+
+?>
+
 <head>
+    <title><?php echo $username ?> | Information</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -7,34 +30,7 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet" />
 </head>
-<?php
 
-
-
-include '../../database/conn.php';
-$uid = $_GET['$uid'];
-
-$sql = "select * from users_apply where id_fk = $uid";
-$query = mysqli_query($conn, $sql);
-$data = mysqli_fetch_array($query);
-
-
-if (isset($_POST['accept'])) {
-    $update_success = "UPDATE users_apply SET apply_status = 'تم القبول' WHERE id_fk = $uid";
-    $query_success = mysqli_query($conn, $update_success);
-    echo "<script>alert('تم القبول')</script>";
-    echo "<script>window.location.href = 'apply_requests'</script>";
-}
-
-if (isset($_POST['decline'])) {
-    $update_decline = "UPDATE users_apply SET apply_status = 'تم الرفض' WHERE id_fk = $uid";
-    $query_decline = mysqli_query($conn, $update_decline);
-    echo "<script>alert('تم الرفض')</script>";
-    echo "<script>window.location.href = 'apply_requests'</script>";
-}
-
-
-?>
 
 <body>
 
@@ -49,14 +45,10 @@ if (isset($_POST['decline'])) {
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="../../uploads/avatar/' . $data['avatar'] . '" alt="avatar" class="rounded-circle img-fluid" width="350px" height="350px">
+                            <img src="../../uploads/logo/' . $data['logo'] . '" alt="logo" class="rounded-circle img-fluid" width="250px" height="250px">
                             <h5 class="my-4" dir="ltr">@' . $data['username'] . '</h5>
                             <div class="d-flex justify-content-center mb-2">
-                                <form method="POST" action="details?$uid=' . $uid . '">
-                                <button name="accept" type="submit" class="btn btn-success fw-bold">قبول</button>
-                                <button name="decline" type="submit" class="btn btn-danger ms-1 me-2 fw-bold">رفض</button>
-                                </form>
-                                <a href="apply_requests"><button type="button" class="btn btn-secondary ms-1 me-4 fw-bold"><i class="fa-solid fa-right-to-bracket fa-lg"></i> الرجوع</button></a>
+                                <a href="home"><button type="button" class="btn btn-secondary ms-1 me-4 fw-bold"><i class="fa-solid fa-right-to-bracket fa-lg"></i> الرجوع</button></a>
                             </div>
                         </div>
                     </div>
@@ -65,11 +57,11 @@ if (isset($_POST['decline'])) {
                             <ul class="list-group list-group-flush rounded-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
 
-                                    <p class="mb-0"><i class="fa-solid fa-calendar-days fa-xl"> </i> تاريخ التقديم: ' . $data['apply_date'] . '</p>
+                                    <p class="mb-0"><i class="fa-solid fa-calendar-days fa-xl"> </i> تاريخ إنشاء الحساب: ' . $data['account_create_date'] . '</p>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
 
-                                    <p class="mb-0"><i class="fa-solid fa-clock fa-xl"> </i> وقت التقديم: ' . $data['apply_time'] . '</p>
+                                    <p class="mb-0"><i class="fa-solid fa-clock fa-xl"> </i> وقت إنشاء الحساب: ' . $data['account_create_time'] . '</p>
                                 </li>
                             </ul>
                         </div>
@@ -78,13 +70,7 @@ if (isset($_POST['decline'])) {
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush rounded-3">
                                 <li class="list-group-item d-flex justify-content-start  p-3">
-                                    <a href="../../uploads/cv/' . $data['cv'] . '" download><button type="button" class="btn btn-lg p-4 text-white text-center" style="background-color:#4F4F4F"><i class="fa-solid fa-download fa-xl"> تحميل السيرة الذاتيه</i></button></a>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-start  p-3">
-                                    <a href="../../uploads/degree_photo/' . $data['degree_photo'] . '" download><button type="button" class="btn btn-lg p-4 text-white text-center" style="background-color:#4F4F4F"><i class="fa-solid fa-download fa-xl"> تحميل المؤهل الدراسي</i></button></a>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-start  p-3">
-                                    <a href="../../uploads/id_photo/' . $data['id_photo'] . '" download><button type="button" class="btn btn-lg p-4 text-white text-center" style="background-color:#4F4F4F"><i class="fa-solid fa-download fa-xl"> تحميل الهوية الوطنية</i></button></a>
+                                    <a href="../../uploads/cr_photo/' . $data['cr_photo'] . '" download><button type="button" class="btn btn-lg p-4 text-white text-center" style="background-color:#4F4F4F"><i class="fa-solid fa-download fa-xl"> تحميل صورة السجل التجاري</i></button></a>
                                 </li>
                             </ul>
                         </div>
@@ -96,28 +82,20 @@ if (isset($_POST['decline'])) {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">الاسم الأول</p>
+                                    <p class="mb-0">اسم الأول</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['first_name'] . '</p>
+                                    <p class="text-muted mb-0"><strong>' . $data['type'] . '</strong> ' . $data['name'] . '</p>
                                 </div>
                             </div>
+                            
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">الاسم الأوسط</p>
+                                    <p class="mb-0">رقم المنشأة</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['middle_name'] . '</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">الأسم الاخير</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['last_name'] . '</p>
+                                    <p class="text-muted mb-0">' . $data['facility_number'] . '</p>
                                 </div>
                             </div>
 
@@ -126,30 +104,13 @@ if (isset($_POST['decline'])) {
                     </div>
                     <div class="card mb-4">
                         <div class="card-body">
+
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">تاريخ الميلاد</p>
+                                    <p class="mb-0">رقم الهاتف</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['birthdate'] . '</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">الجنس</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['gender'] . '</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">رقم الهوية</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['id_number'] . '</p>
+                                    <p class="text-muted mb-0">' . $data['phone_number'] . '</p>
                                 </div>
                             </div>
                             <hr>
@@ -224,31 +185,22 @@ if (isset($_POST['decline'])) {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">المؤهل الدراسي</p>
+                                    <p class="mb-0">عدد الموظفين</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['degree'] . '</p>
+                                    <p class="text-muted mb-0">' . $data['employee_count'] . '</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">التخصص الدراسي</p>
+                                    <p class="mb-0">دخل المنشأة</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['major'] . '</p>
+                                    <p class="text-muted mb-0">' . $data['income'] . '</p>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">المعدل</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">' . $data['gpa'] . '/' . $data['gpa_from'] . '</p>
-                                </div>
-                            </div>
-
+                           
 
                         </div>
                     </div>

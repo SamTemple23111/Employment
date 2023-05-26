@@ -8,7 +8,7 @@ session_start();
 include '../../includes/sessions.php';
 
 
-if (isset($id) && $role == 'facility') {
+if (isset($id) && $username == 'admin') {
 } else {
 
     header('location: ../../redirect/session_block.php');
@@ -44,7 +44,7 @@ if (isset($id) && $role == 'facility') {
             <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
                 <ul class="navbar-nav w-100 justify-content-center">
                     <div class='dropdown text-end'>
-                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> <?php echo $name ?> <img src="../../uploads/logo/<?php echo $logo ?>" alt='mdo' width='32' height='32' class='rounded-circle'>
+                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> <?php echo $username ?> <img src="../../images/avatars/avatar.png" alt='admin avatar' width='32' height='32' class='rounded-circle'>
                         </a>
                         <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
                             <li><a class='dropdown-item' href='../../home'>الصفحة الرئيسية</a></li>
@@ -61,7 +61,7 @@ if (isset($id) && $role == 'facility') {
 
     <div class="py-5 text-center">
         <h1 class="display-4 fw-bold">لوحة التحكم: </h1>
-        <p class="text-muted lead" id="pra">بإمكانك من هنا إنشاء إعلان توظيف ورئويسة الإعلانات الخاصة بك وعرض طلبات التوظيف وايضًا رؤية معلومات منشأتك</p>
+
     </div>
 
 
@@ -78,23 +78,23 @@ if (isset($id) && $role == 'facility') {
                     <a href="dashboard/facility/create_ads" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
-                                <i class="fa-solid fa-circle-plus mt-4 fa-4x" style="color: #2B4177"></i>
+                                <i class="fa-solid fa-user-minus mt-4 fa-4x" style="color: #820000"></i>
                             </div>
                             <div class="card-body">
-                                <h4 class="text-decoration-none fw-bold">إنشاء إعلان توظيف</h4>
+                                <h4 class="text-decoration-none fw-bold">إزالة حساب</h4>
                             </div>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-md-6 col-12 mb-2">
-                    <a href="dashboard/facility/ads" class="text-decoration-none">
+                    <a href="dashboard/facility/create_ads" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
-                                <i class="fa-solid fa-list-ul mt-4 fa-4x" style="color: #2F5299"></i>
+                                <i class="fa-solid fa-user-minus mt-4 fa-4x" style="color: #825500"></i>
                             </div>
                             <div class="card-body">
-                                <h4 class="text-decoration-none fw-bold">الإعلانات</h4>
+                                <h4 class="text-decoration-none fw-bold">إزالة منشأة</h4>
                             </div>
                         </div>
                     </a>
@@ -104,10 +104,10 @@ if (isset($id) && $role == 'facility') {
                     <a href="dashboard/facility/apply_requests" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
-                                <i class="fa-solid fa-users mt-4 fa-4x" style="color: #007078"></i>
+                                <i class="fa-solid fa-file-excel mt-4 fa-4x" style="color: #00616D"></i>
                             </div>
                             <div class="card-body">
-                                <h4 class="text-decoration-none fw-bold">طلبات التوظيف</h4>
+                                <h4 class="text-decoration-none fw-bold">حذف إعلان</h4>
                             </div>
                         </div>
                     </a>
@@ -117,26 +117,15 @@ if (isset($id) && $role == 'facility') {
                     <a href="dashboard/facility/information" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
-                                <i class="fa-solid fa-address-card mt-4 fa-4x" style="color: #420078"></i>
+                                <i class="fa-solid fa-rectangle-ad mt-4 fa-4x" style="color: #006D4F"></i>
                             </div>
                             <div class="card-body">
-                                <h4 class="text-decoration-none fw-bold">معلومات المنشأة</h4>
+                                <h4 class="text-decoration-none fw-bold">حذف تقديم</h4>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-12 col-12 mb-2">
-                    <a href="../../contact.php" class=" text-decoration-none">
-                        <div class="card testimonial-card ">
-                            <div class="avatar mx-auto bg-white">
-                                <i class="fa-solid fa-phone mt-4 fa-4x" style="color: #891E1E"></i>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="text-decoration-none fw-bold">للتواصل</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+
 
 
             </div>

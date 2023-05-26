@@ -1,4 +1,27 @@
+<?php
+
+
+
+session_start();
+include '../../database/conn.php';
+include '../../includes/sessions.php';
+
+$sql = "select * from users where id = $id";
+$query = mysqli_query($conn, $sql);
+$data = mysqli_fetch_array($query);
+
+
+if (isset($id) && $role == 'user') {
+} else {
+
+    header('location: ../../redirect/session_block.php');
+}
+
+
+?>
+
 <head>
+    <title><?php echo $first_name ?> | Information</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -7,34 +30,7 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet" />
 </head>
-<?php
 
-
-
-include '../../database/conn.php';
-$uid = $_GET['$uid'];
-
-$sql = "select * from users_apply where id_fk = $uid";
-$query = mysqli_query($conn, $sql);
-$data = mysqli_fetch_array($query);
-
-
-if (isset($_POST['accept'])) {
-    $update_success = "UPDATE users_apply SET apply_status = 'تم القبول' WHERE id_fk = $uid";
-    $query_success = mysqli_query($conn, $update_success);
-    echo "<script>alert('تم القبول')</script>";
-    echo "<script>window.location.href = 'apply_requests'</script>";
-}
-
-if (isset($_POST['decline'])) {
-    $update_decline = "UPDATE users_apply SET apply_status = 'تم الرفض' WHERE id_fk = $uid";
-    $query_decline = mysqli_query($conn, $update_decline);
-    echo "<script>alert('تم الرفض')</script>";
-    echo "<script>window.location.href = 'apply_requests'</script>";
-}
-
-
-?>
 
 <body>
 
@@ -52,11 +48,7 @@ if (isset($_POST['decline'])) {
                             <img src="../../uploads/avatar/' . $data['avatar'] . '" alt="avatar" class="rounded-circle img-fluid" width="350px" height="350px">
                             <h5 class="my-4" dir="ltr">@' . $data['username'] . '</h5>
                             <div class="d-flex justify-content-center mb-2">
-                                <form method="POST" action="details?$uid=' . $uid . '">
-                                <button name="accept" type="submit" class="btn btn-success fw-bold">قبول</button>
-                                <button name="decline" type="submit" class="btn btn-danger ms-1 me-2 fw-bold">رفض</button>
-                                </form>
-                                <a href="apply_requests"><button type="button" class="btn btn-secondary ms-1 me-4 fw-bold"><i class="fa-solid fa-right-to-bracket fa-lg"></i> الرجوع</button></a>
+                                <a href="home"><button type="button" class="btn btn-secondary ms-1 me-4 fw-bold"><i class="fa-solid fa-right-to-bracket fa-lg"></i> الرجوع</button></a>
                             </div>
                         </div>
                     </div>
@@ -65,11 +57,11 @@ if (isset($_POST['decline'])) {
                             <ul class="list-group list-group-flush rounded-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
 
-                                    <p class="mb-0"><i class="fa-solid fa-calendar-days fa-xl"> </i> تاريخ التقديم: ' . $data['apply_date'] . '</p>
+                                    <p class="mb-0"><i class="fa-solid fa-calendar-days fa-xl"> </i> تاريخ إنشاء الحساب: ' . $data['account_create_date'] . '</p>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
 
-                                    <p class="mb-0"><i class="fa-solid fa-clock fa-xl"> </i> وقت التقديم: ' . $data['apply_time'] . '</p>
+                                    <p class="mb-0"><i class="fa-solid fa-clock fa-xl"> </i> وقت إنشاء الحساب: ' . $data['account_create_time'] . '</p>
                                 </li>
                             </ul>
                         </div>
