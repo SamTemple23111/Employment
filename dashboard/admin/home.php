@@ -8,7 +8,7 @@ session_start();
 include '../../includes/sessions.php';
 
 
-if (isset($id) && $username == 'admin') {
+if (isset($id) && $role == 'admin') {
 } else {
 
     header('location: ../../redirect/session_block.php');
@@ -75,7 +75,7 @@ if (isset($id) && $username == 'admin') {
             <div class="row text-center d-flex align-items-stretch">
 
                 <div class="col-md-6 col-12 mb-2">
-                    <a href="dashboard/facility/create_ads" class="text-decoration-none">
+                    <a href="dashboard/admin/remove_account" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
                                 <i class="fa-solid fa-user-minus mt-4 fa-4x" style="color: #820000"></i>
@@ -88,7 +88,7 @@ if (isset($id) && $username == 'admin') {
                 </div>
 
                 <div class="col-md-6 col-12 mb-2">
-                    <a href="dashboard/facility/create_ads" class="text-decoration-none">
+                    <a href="dashboard/admin/remove_facility" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
                                 <i class="fa-solid fa-user-minus mt-4 fa-4x" style="color: #825500"></i>
@@ -101,7 +101,7 @@ if (isset($id) && $username == 'admin') {
                 </div>
 
                 <div class="col-md-6 col-12 mb-2">
-                    <a href="dashboard/facility/apply_requests" class="text-decoration-none">
+                    <a href="dashboard/admin/remove_ads" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
                                 <i class="fa-solid fa-file-excel mt-4 fa-4x" style="color: #00616D"></i>
@@ -114,7 +114,7 @@ if (isset($id) && $username == 'admin') {
                 </div>
 
                 <div class="col-md-6 col-12 mb-2">
-                    <a href="dashboard/facility/information" class="text-decoration-none">
+                    <a href="dashboard/admin/remove_apply" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
                                 <i class="fa-solid fa-rectangle-ad mt-4 fa-4x" style="color: #006D4F"></i>

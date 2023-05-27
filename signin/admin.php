@@ -45,6 +45,7 @@ if (isset($_POST['submit'])) {
     if ($row_num == 1) {
       $_SESSION['id'] = $fetch['id'];
       $_SESSION['username'] = $fetch['username'];
+      $_SESSION['role'] = $fetch['role'];
       // $_SESSION['logo'] = $fetch['logo'];
       header('location: ../dashboard/admin/home.php');
     } else {
