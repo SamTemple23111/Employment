@@ -46,7 +46,7 @@ include 'includes/nav.php';
                         <div class="card-body">
                             <div class="d-md-flex">
                                 <div class="flex-grow-1">
-                                    <a href="https://teleworks.sa/ar/job/specialist-marketing-1683804790" data-step="5" data-position="right" data-intro=" عند الدخول على صفحة البحث عن وظائف،تظهر قائمة الوظائف المتاحة،ويمكن للمستخدم البحث على مسمى الوظيفة">
+                                    <a data-step="5" data-position="right" data-intro=" عند الدخول على صفحة البحث عن وظائف،تظهر قائمة الوظائف المتاحة،ويمكن للمستخدم البحث على مسمى الوظيفة">
                                         <h3 class="card-title d-inline-block secondary my-0 py-0">' . $row[2] . '</h3>
                                     </a>
                                     <h5 class="mb-1"><span><strong>اسم المنشأة: </strong>' . $row[1] . '</span></h5>

@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
             <?php echo $invaild ?>
 
             <button name="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary text-white fw-bold " type="submit">تسجيل دخول</button>
-            <small class="fw-bold">ليس لديك حساب؟ <a href="signup/enterprise.php"> سجل حساب جديد</a></small>
+            <small class="fw-bold">ليس لديك حساب؟ <a href="signup/facilities.php"> سجل حساب جديد</a></small>
           </form>
         </div>
       </div>
