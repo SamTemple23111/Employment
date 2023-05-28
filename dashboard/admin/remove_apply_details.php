@@ -9,11 +9,15 @@
 </head>
 <?php
 
-if (isset($id) && $role == 'admin') {
-} else {
+    session_start();
 
-    header('location: ../../redirect/session_block.php');
-}
+    include '../../includes/sessions.php';
+
+    if (isset($id) && $role == 'admin') {
+    } else {
+
+        header('location: ../../redirect/session_block.php');
+    }
 
 
 include '../../database/conn.php';

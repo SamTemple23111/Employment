@@ -75,7 +75,11 @@ if (isset($id) && $role == 'facility') {
 
             $sql = "insert into facilities_request (name,ads_title,ads_major,ads_description,ads_created_date,ads_created_time,id_fk) values('$name','$ads_title','$ads_major','$ads_description','$date','$time','$id')";
             $query = mysqli_query($conn, $sql);
-            $ads_submit = "<div class='alert alert-success fw-bold' role='alert'> <i class='fa-solid fa-square-check fa-2xl'> </i> تم إرسال الإعلان الوظيفي  </div>";
+
+            if ($query) {
+                $ads_submit = "<div class='alert alert-success fw-bold' role='alert'> <i class='fa-solid fa-square-check fa-2xl'> </i> تم إرسال الإعلان الوظيفي  </div>";
+
+            }
         }
     }
 

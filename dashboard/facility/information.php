@@ -3,19 +3,21 @@
 
 
 session_start();
-include '../../database/conn.php';
+
 include '../../includes/sessions.php';
-
-$sql = "select * from facilities where id = $id";
-$query = mysqli_query($conn, $sql);
-$data = mysqli_fetch_array($query);
-
 
 if (isset($id) && $role == 'facility') {
 } else {
 
     header('location: ../../redirect/session_block.php');
 }
+include '../../database/conn.php';
+$sql = "select * from facilities where id = $id";
+$query = mysqli_query($conn, $sql);
+$data = mysqli_fetch_array($query);
+
+
+
 
 
 ?>

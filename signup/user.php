@@ -408,7 +408,7 @@ if (isset($_POST['submit'])) {
 
       <div class="modal-content rounded-4 shadow">
         <div class="modal-header p-5 pb-4 border-bottom-0">
-          <span class="badge bg-dark text-white">
+          <span class="badge text-white" style="background-color: rgba(0, 55, 113, 0.663); border-color: rgba(0, 55, 113, 0.663);">
             <h1 class="fw-bold mb-0 fs-3">تسجيل حساب جديد</h1>
           </span>
         </div>
@@ -717,7 +717,7 @@ if (isset($_POST['submit'])) {
             </div>
 
 
-            <button name="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-dark text-white fw-bold " type="submit">تسجيل حساب جديد</button>
+            <button name="submit" class="w-100 mb-2 btn btn-lg rounded-3 text-white fw-bold " type="submit" style="background-color: rgba(0, 55, 113, 0.663); border-color: rgba(0, 55, 113, 0.663);">تسجيل حساب جديد</button>
             <small class="fw-bold">لديك حساب بالفعل؟ <a href="signin/user.php"> سجل دخول</a></small>
           </form>
         </div>

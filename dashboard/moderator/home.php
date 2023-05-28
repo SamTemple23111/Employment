@@ -74,28 +74,40 @@ if (isset($id) && $role == 'moderator') {
 
             <div class="row text-center d-flex align-items-stretch">
 
-
-                <div class="col-md-12 col-12 mb-2">
+                <div class="col-md-6 col-12 mb-2">
                     <a href="dashboard/moderator/remove_ads" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
-                                <i class="fa-solid fa-file-excel mt-4 fa-4x" style="color: #00616D"></i>
+                                <i class="fa-solid fa-rectangle-ad mt-4 fa-4x" style="color: #00616D"></i>
                             </div>
                             <div class="card-body">
-                                <h4 class="text-decoration-none fw-bold">حذف إعلان</h4>
+                                <h4 class="text-decoration-none fw-bold">قائمة الإعلانات</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-12 mb-2">
+                    <a href="dashboard/moderator/remove_apply" class="text-decoration-none">
+                        <div class="card testimonial-card ">
+                            <div class="avatar mx-auto bg-white">
+                                <i class="fa-solid fa-file-signature mt-4 fa-4x" style="color: #006D4F"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="text-decoration-none fw-bold">قائمة التقديمات</h4>
                             </div>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-md-12 col-12 mb-2">
-                    <a href="dashboard/moderator/remove_apply" class="text-decoration-none">
+                    <a href="dashboard/moderator/messages" class="text-decoration-none">
                         <div class="card testimonial-card ">
                             <div class="avatar mx-auto bg-white">
-                                <i class="fa-solid fa-rectangle-ad mt-4 fa-4x" style="color: #006D4F"></i>
+                                <i class="fa-solid fa-envelope mt-4 fa-4x" style="color: #232323"></i>
                             </div>
                             <div class="card-body">
-                                <h4 class="text-decoration-none fw-bold">حذف تقديم</h4>
+                                <h4 class="text-decoration-none fw-bold">قائمة الرسائل</h4>
                             </div>
                         </div>
                     </a>

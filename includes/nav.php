@@ -60,7 +60,7 @@ ini_set('display_errors', 0);
                 </div>";
                 }
 
-                if ($username == 'admin') {
+                if ($role == 'admin') {
                     echo "                <div class='dropdown text-end'>
                         <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $username <img src='images/avatars/avatar.png' alt='$username logo' width='32' height='32' class='rounded-circle'>
                     </a>
@@ -71,14 +71,27 @@ ini_set('display_errors', 0);
                 </div>";
                 }
 
+                if ($role == 'moderator') {
+                    echo "                <div class='dropdown text-end'>
+                        <a href='#' class='d-block link-light text-decoration-none dropdown-toggle dropend' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'> $username <img src='images/avatars/avatar.png' alt='$username logo' width='32' height='32' class='rounded-circle'>
+                    </a>
+                    <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1'>
+                        <li><a class='dropdown-item' href='dashboard/moderator/home'>لوحة التحكم</a></li>
+                        <li><a class='dropdown-item' href='database/logout'><span class='badge bg-danger'>تسجيل خروج</span></a></li>
+                    </ul>
+                </div>";
+                }
 
-                if ($role !== 'facility' && $role !== 'user' && $username !== 'admin') {
+
+                if ($role !== 'facility' && $role !== 'user' && $role !=='admin' && $role !== 'moderator') {
                     echo '                <li class="nav-item">
                     <a href="signup/home.php"><button type="button" class="btn btn-secondary me-3 sign-in">تسجيل</button></a>
                 </li>
                 <li class="nav-item">
-                    <a href="signin/home.php"><button type="button" class="btn btn-light sign-in">تسجيل دخول</button></a>
-                </li>';
+                    <a href="signin/home.php"><button type="button" class="btn btn-light sign-in me-3">تسجيل دخول</button></a>'
+
+                
+                ;
                 }
 
 

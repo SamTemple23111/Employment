@@ -13,6 +13,54 @@ include 'includes/nav.php';
 
 ?>
 
+<?php
+
+$name_empty_msg = "";
+$email_empty_msg = "";
+$subject_empty_msg = "";
+$message_empty_msg = "";
+$contact_submit = "";
+
+if (isset($_POST['submit'])) {
+
+$name = $_POST['name'];
+$email = $_POST['email'];
+$subject = $_POST['subject'];
+$message = $_POST['message'];
+
+if (empty($name)) {
+$name_empty_msg = 'الرجاء ادخال اسمك الكامل';
+}
+
+if (empty($email) ) {
+$email_empty_msg = 'الرجاء ادخال البريد الإلكتروني';
+}
+
+if (empty($subject)) {
+$subject_empty_msg = 'الرجاء ادخال عنوان الرسالة';
+}
+
+if (empty($message)) {
+$message_empty_msg = 'الرجاء ادخال الرسالة';
+}
+
+if ($name_empty_msg == "" && $email_empty_msg == "" && $subject_empty_msg == "" && $message_empty_msg == ""){
+
+include 'database/conn.php';
+
+$sql = "INSERT INTO contact (name,email,subject,message) VALUES('$name','$email','$subject','$message')";
+$query = mysqli_query($conn, $sql);
+
+if ($query) {
+$ads_submit = "<div class='alert alert-success fw-bold' role='alert'> <i class='fa-solid fa-square-check fa-2xl'> </i>تم إرسال الرسالة</div>";
+}
+
+
+}
+
+}
+
+?>
 
 
 
@@ -23,105 +71,49 @@ include 'includes/nav.php';
 
 <div class="container w-25 justify-content-center align-items-center">
 
-<?php
-if ($role == 'user') {
-  echo '  <form action="contact.php" method="post" autocomplete="off">
+  <?php
+
+    echo '  <form action="contact.php" method="post" >
     <div class="form-group">
       <label class="py-1 fw-bold" for="name">الاسم: </label>
-      <input type="text" id="name" class="form-control" value="'. $first_name .' '. $middle_name . ' ' . $last_name . '" disabled>
+      <input name="name" type="text" id="name" class="form-control">
+      <p class="text-danger">' . $name_empty_msg . '</p>
+    </div>
+
+
+
+    <div class="form-group py-2">
+      <label class="py-1 fw-bold" for="email">البريد اللإلكتروني: </label>
+      <input  type="email" name="email" class="form-control" id="email">
+            <p class="text-danger">' . $email_empty_msg . '</p>
     </div>
 
     <div class="form-group py-2">
       <label class="py-1 fw-bold" for="subject">الموضوع: </label>
-      <input type="text" id="subject" class="form-control">
-    </div>
-
-    <div class="form-group py-2">
-      <label class="py-1 fw-bold" for="email">البريد اللإلكتروني: </label>
-      <input type="email" name="email" class="form-control" id="email" value="'. $email .'" disabled>
+      <input type="text" id="subject" name="subject" class="form-control">
+            <p class="text-danger">' . $subject_empty_msg . '</p>
     </div>
 
     <div class="form-group py-2">
       <label class="py-1 fw-bold" for="email">الرساله: </label>
       <textarea name="message" id="" class="form-control" cols="30" rows="10"></textarea>
+      <p class="text-danger">' . $message_empty_msg . '</p>
     </div>
 
+    ' . $ads_submit . '
+    
     <div class="form-group py-1">
       <input type="submit" value="إرسال" class="form-control btn btn-primary" name="submit">
     </div>
+
+
 
     <div class="py-3"></div>
 
 </div>
 </form>';
-}
-
-if ($role == 'facility') {
-  echo '  <form action="contact.php" method="post" autocomplete="off">
-    <div class="form-group">
-      <label class="py-1 fw-bold" for="name">الاسم: </label>
-      <input type="text" id="name" class="form-control" value="' . $type . ' ' . $name . '" disabled>
-    </div>
-
-    <div class="form-group py-2">
-      <label class="py-1 fw-bold" for="subject">الموضوع: </label>
-      <input type="text" id="subject" class="form-control">
-    </div>
-
-    <div class="form-group py-2">
-      <label class="py-1 fw-bold" for="email">البريد اللإلكتروني: </label>
-      <input type="email" name="email" class="form-control" id="email" value="' . $email . '" disabled>
-    </div>
-
-    <div class="form-group py-2">
-      <label class="py-1 fw-bold" for="email">الرساله: </label>
-      <textarea name="message" id="" class="form-control" cols="30" rows="10"></textarea>
-    </div>
-
-    <div class="form-group py-1">
-      <input type="submit" value="إرسال" class="form-control btn btn-primary" name="submit">
-    </div>
-
-    <div class="py-3"></div>
-
-</div>
-</form>';
-}
-
-if (!$role == 'facility' && !$role == 'user') {
-  echo '  <form action="contact.php" method="post" autocomplete="off">
-    <div class="form-group">
-      <label class="py-1 fw-bold" for="name">الاسم: </label>
-      <input type="text" id="name" class="form-control">
-    </div>
-
-    <div class="form-group py-2">
-      <label class="py-1 fw-bold" for="subject">الموضوع: </label>
-      <input type="text" id="subject" class="form-control">
-    </div>
-
-    <div class="form-group py-2">
-      <label class="py-1 fw-bold" for="email">البريد اللإلكتروني: </label>
-      <input type="email" name="email" class="form-control" id="email">
-    </div>
-
-    <div class="form-group py-2">
-      <label class="py-1 fw-bold" for="email">الرساله: </label>
-      <textarea name="message" id="" class="form-control" cols="30" rows="10"></textarea>
-    </div>
-
-    <div class="form-group py-1">
-      <input type="submit" value="إرسال" class="form-control btn btn-primary" name="submit">
-    </div>
-
-    <div class="py-3"></div>
-
-</div>
-</form>';
-}
-
-
-?>
+  
+  ?>
 </div>
 <?php include 'includes/footer.php' ?>
 <?php include 'includes/end.php' ?>

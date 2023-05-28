@@ -57,18 +57,10 @@ if (isset($id) && $role == 'user') {
             </div>
         </div>
     </nav>
-    <div class="mt-5"></div>
 
-    <div class="text-center ">
-        <h1 class="display-4 fw-bold">قائمة إعلانات التوظيف: </h1>
-        <p class="text-muted lead" id="pra">هنا سوف تجد جميع إعلانات التوظيف من قبل المنشآت وبإمكانك التقديم إليها بضغطت زر</p>
-    </div>
-    <div class="col-md-12 text-center">
-        <a href="dashboard/user/home">
-            <button type="button" style="background-color: #467499" class="text-white fw-bold justify-content-center btn btn-lg"><i class="fa-solid fa-right-to-bracket"></i> الرجوع إلى الصفحة الرئيسية</button>
 
-        </a>
-    </div>
+
+
     <main class="container">
         <div class="row">
             <div class="col">
@@ -78,6 +70,50 @@ if (isset($id) && $role == 'user') {
                 include '../../database/conn.php';
                 $sql = "SELECT id_request,name,ads_title,ads_major,ads_description,ads_created_date,ads_created_time,id_fk FROM facilities_request";
                 $query = mysqli_query($conn, $sql);
+
+
+
+                $sql_jobs = "SELECT * FROM facilities_request";
+                $query_jobs = mysqli_query($conn, $sql_jobs);
+                $rows_jobs = mysqli_num_rows($query_jobs);  
+                
+                if ($rows_jobs > 1) {
+
+                    echo '    <div class="text-center ">
+        <h1 class="display-4 fw-bold">قائمة إعلانات التوظيف: </h1>
+        <p class="text-muted lead" id="pra">هنا سوف تجد جميع إعلانات التوظيف من قبل المنشآت وبإمكانك التقديم إليها بضغطت زر</p>
+    </div>
+    <div class="col-md-12 text-center">
+        <a href="dashboard/user/home">
+            <button type="button" style="background-color: #467499" class="text-white fw-bold justify-content-center btn btn-lg"><i class="fa-solid fa-right-to-bracket"></i> الرجوع إلى الصفحة الرئيسية</button>
+
+        </a>
+    </div>
+        <div class="mt-5"></div>
+    '
+    
+    ;
+
+                } else {
+                    echo '
+
+                        <div class="mt-5" style="padding-bottom: 204px;"></div>
+                    <div class="text-center ">
+        <h1 class="display-4 fw-bold">لاتوجد وظائف متاحة </h1>
+    </div>
+    
+    <div class="col-md-12 text-center">
+        <a href="dashboard/user/home">
+            <button type="button" style="background-color: #467499" class="text-white fw-bold justify-content-center btn btn-lg"><i class="fa-solid fa-right-to-bracket"></i> الرجوع إلى الصفحة الرئيسية</button>
+
+        </a>
+    </div>
+    <div class="mt-5" style="padding-top: 15.6%;"></div>
+    ';
+                }
+
+
+
                 ?>
 
 
@@ -86,7 +122,10 @@ if (isset($id) && $role == 'user') {
                 while ($row = mysqli_fetch_row($query)) {
                     $query1 = mysqli_query($conn, $sql);
                     $row1 = mysqli_fetch_assoc($query1);
-                    echo '                
+                    echo ' 
+                    
+                    
+                    
                     <section class="card-animation py-3">
                     <div class="mx-auto card col-7 p-3 ">
                         <div class="card-body">

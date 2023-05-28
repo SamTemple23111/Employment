@@ -9,6 +9,18 @@
 </head>
 <?php
 
+    session_start();
+
+
+
+
+    include '../../includes/sessions.php';
+
+    if (isset($id) && $role == 'facility') {
+    } else {
+
+        header('location: ../../redirect/session_block.php');
+    }
 
 
 include '../../database/conn.php';

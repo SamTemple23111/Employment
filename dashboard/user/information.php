@@ -3,19 +3,22 @@
 
 
 session_start();
-include '../../database/conn.php';
+
 include '../../includes/sessions.php';
-
-$sql = "select * from users where id = $id";
-$query = mysqli_query($conn, $sql);
-$data = mysqli_fetch_array($query);
-
 
 if (isset($id) && $role == 'user') {
 } else {
 
     header('location: ../../redirect/session_block.php');
 }
+
+include '../../database/conn.php';
+$sql = "select * from users where id = $id";
+$query = mysqli_query($conn, $sql);
+$data = mysqli_fetch_array($query);
+
+
+
 
 
 ?>

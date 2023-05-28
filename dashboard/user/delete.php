@@ -1,5 +1,14 @@
 <?php
 
+session_start();
+
+include '../../includes/sessions.php';
+
+if (isset($id) && $role == 'user') {
+} else {
+
+    header('location: ../../redirect/session_block.php');
+}
 
 include '../../database/conn.php';
 $id_request_fk = $_GET['$id_request_fk'];

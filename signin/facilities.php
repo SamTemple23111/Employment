@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
           <span class="badge bg-light text-dark">
             <h1 class="fw-bold mb-0 fs-2">تسجيل دخول</h1>
           </span>
-          <span class="badge bg-primary text-white">
+          <span class="badge  text-white" style="background-color: rgba(0, 61, 40, 0.663); border-color: rgba(0, 61, 40, 0.663);">
             <h6 class="fw-bold mb-0">للمنشآت</h6>
           </span>
         </div>
@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
 
             <?php echo $invaild ?>
 
-            <button name="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary text-white fw-bold " type="submit">تسجيل دخول</button>
+            <button name="submit" class="w-100 mb-2 btn btn-lg rounded-3 text-white fw-bold " type="submit" style="background-color: rgba(0, 61, 40, 0.663); border-color: rgba(0, 61, 40, 0.663);">تسجيل دخول</button>
             <small class="fw-bold">ليس لديك حساب؟ <a href="signup/facilities.php"> سجل حساب جديد</a></small>
           </form>
         </div>
