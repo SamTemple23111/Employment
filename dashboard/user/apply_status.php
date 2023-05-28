@@ -59,11 +59,18 @@ if (isset($id) && $role == 'user') {
         </div>
     </nav>
 
+    <div class="mt-5"></div>
 
+    <div class="text-center">
+        <h1 class="display-4 fw-bold">حالة التقديم </h1>
+        <p class="text-muted lead" id="pra">من هنا بإمكان عرض حالة تقديمك للشركات والمؤسسات</p>
+    </div>
 
-
-
-
+    <div class="col-md-12 text-center">
+        <a href="dashboard/user/home">
+            <button type="button" style="background-color: #467499" class="text-white fw-bold justify-content-center btn btn-lg"><i class="fa-solid fa-right-to-bracket"></i> الرجوع إلى الصفحة الرئيسية</button>
+        </a>
+    </div>
 
     <section class="card-animation container py-5 p-5">
         <?php
@@ -71,42 +78,8 @@ if (isset($id) && $role == 'user') {
         $sql = "SELECT * FROM users_apply where id_fk = $id";
         $query = mysqli_query($conn, $sql);
 
-    $sql_jobs = "SELECT * FROM users_apply where id_fk = $id";
-    $query_jobs = mysqli_query($conn, $sql_jobs);
-    $rows_jobs = mysqli_num_rows($query_jobs);
 
-    if ($rows_jobs > 1) {
-
-        echo '        <div class="text-center">
-        <h1 class="display-4 fw-bold">حالة التقديم </h1>
-        <p class="text-muted lead" id="pra">من هنا بإمكان عرض حالة تقديمك للشركات والمؤسسات</p>
-    </div>
-    <div class="col-md-12 text-center">
-        <a href="dashboard/user/home">
-            <button type="button" style="background-color: #467499" class="text-white fw-bold justify-content-center btn btn-lg"><i class="fa-solid fa-right-to-bracket"></i> الرجوع إلى الصفحة الرئيسية</button>
-
-        </a>
-    </div>
-        <div class="mt-5"></div>
-    ';
-    } else {
-        echo '
-
-                        <div class="mt-5" style="padding-bottom: 204px;"></div>
-                    <div class="text-center ">
-        <h1 class="display-4 fw-bold">لاتوجد تقديمات لديك متاحة </h1>
-    </div>
-    
-    <div class="col-md-12 text-center">
-        <a href="dashboard/user/home">
-            <button type="button" style="background-color: #467499" class="text-white fw-bold justify-content-center btn btn-lg"><i class="fa-solid fa-right-to-bracket"></i> الرجوع إلى الصفحة الرئيسية</button>
-
-        </a>
-    </div>
-    <div class="mt-5" style="padding-top: 15.6%;"></div>
-    ';
-    }
-
+        
         ?>
 
         <table class="apply table table-striped table-hover">
