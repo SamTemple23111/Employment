@@ -91,6 +91,8 @@ if (isset($id) && $role == 'moderator') {
                     <th scope="col">اسم المُرسل</th>
                     <th scope="col">البريد الإلكتروني للمُرسل</th>
                     <th scope="col">موضوع الرسالة</th>
+                    <th scope="col">تاريخ ارسال الرسالة</th>
+                    <th scope="col">وقت ارسال الرسالة</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
@@ -105,6 +107,8 @@ if (isset($id) && $role == 'moderator') {
                     <td>' . $row['name'] . '</td>
                     <td>' . $row['email'] . '</td>
                     <td>' . $row['subject'] . '</td>
+                                                            <td>' . $row['message_sent_date'] . '</td>
+                    <td>' . $row['message_sent_time'] . '</td>
                     <td><a href="dashboard/moderator/view_messages.php?$message_id=' . $row['id'] . '""><button type="button" class="btn btn-outline-primary btn-sm">عرض الرسالة</button></a></td>
                     <td><a href="dashboard/moderator/remove_messages.php?$message_id=' . $row['id'] . '""><button type="button" class="btn btn-outline-danger btn-sm">حذف الرسالة</button></a></td>
                 </tr>';

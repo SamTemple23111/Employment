@@ -66,6 +66,8 @@ if (isset($id) && $role == 'moderator') {
                     <th scope="col">اسم المُرسل</th>
                     <th scope="col">البريد الإلكتروني للمُرسل</th>
                     <th scope="col">موضوع الرسالة</th>
+                    <th scope="col">تاريخ ارسال الرسالة</th>
+                    <th scope="col">وقت ارسال الرسالة</th>
 
                 </tr>
             </thead>
@@ -79,6 +81,8 @@ if (isset($id) && $role == 'moderator') {
                     <td>' . $row['name'] . '</td>
                     <td>' . $row['email'] . '</td>
                     <td>' . $row['subject'] . '</td>
+                    <td>' . $row['message_sent_date'] . '</td>
+                    <td>' . $row['message_sent_time'] . '</td>
                 </tr>';
 
 

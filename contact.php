@@ -15,6 +15,10 @@ include 'includes/nav.php';
 
 <?php
 
+date_default_timezone_set("Asia/Riyadh");
+$date = date("Y/m/d");
+$hours = date("h:i:s a");
+
 $name_empty_msg = "";
 $email_empty_msg = "";
 $subject_empty_msg = "";
@@ -48,7 +52,7 @@ if ($name_empty_msg == "" && $email_empty_msg == "" && $subject_empty_msg == "" 
 
 include 'database/conn.php';
 
-$sql = "INSERT INTO contact (name,email,subject,message) VALUES('$name','$email','$subject','$message')";
+$sql = "INSERT INTO contact (name,email,subject,message,message_sent_date,message_sent_time) VALUES('$name','$email','$subject','$message','$date','$hours')";
 $query = mysqli_query($conn, $sql);
 
 if ($query) {

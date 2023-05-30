@@ -78,7 +78,7 @@ if (isset($id) && $role == 'admin') {
 
     <div class="mt-5"></div>
 
-    <section class="card-animation container py-2 p-5">
+    <section class="card-animation container py-2 p-1">
         <?php
         include '../../database/conn.php';
         $sql = "SELECT * FROM users_apply";
@@ -117,7 +117,7 @@ if (isset($id) && $role == 'admin') {
                     <td>' . $row['email'] . '</td>
                     <td>' . $row['apply_date'] . '</td>
                     <td>' . $row['apply_time'] . '</td>
-                                                            <td><a href="dashboard/admin/remove_apply_done.php?$apply_id=' . $row['apply_id'] . '""><button type="button" class="btn btn-outline-secondary btn-sm">المزيد</button></a></td>
+                                                            <td><a href="dashboard/admin/remove_apply_done.php?$apply_id=' . $row['apply_id'] . '""><button type="button" class="btn btn-outline-danger btn-sm">حذف التقديم</button></a></td>
                 </tr>';
                 }
                 ?>

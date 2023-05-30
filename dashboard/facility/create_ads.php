@@ -66,6 +66,7 @@ if (isset($id) && $role == 'facility') {
         if (empty($ads_description)) {
             $ads_description_empty_msg = 'الرجاء ادخال وصف الوظيفة';
         }
+        
         date_default_timezone_set("Asia/Riyadh");
         $date = date("Y/m/d");
         $time = date("h:i:s A");

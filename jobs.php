@@ -39,7 +39,7 @@ include 'includes/nav.php';
       <?php
       while ($row = mysqli_fetch_row($query)) {
         $query1 = mysqli_query($conn, $sql);
-        $row1 = mysqli_fetch_assoc($query1);
+      //  $row1 = mysqli_fetch_assoc($query1);
         echo '                
                     <section class="card-animation py-3">
                     <div class="mx-auto card col-7 p-3 ">

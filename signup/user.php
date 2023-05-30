@@ -186,6 +186,8 @@ if (isset($_POST['submit'])) {
 
   $password1 = $_POST['password1'];
   $password2 = $_POST['password2'];
+
+  
   date_default_timezone_set("Asia/Riyadh");
   $date = date("Y/m/d");
   $hours = date("h:i:s a");
@@ -219,7 +221,7 @@ if (isset($_POST['submit'])) {
     $username_len3_msg = 'يجب أن يكون اسم المستخدم 3 أحرف على الأقل';
   }
   if (strlen($username) > 15) {
-    $username_len15_msg = 'يجب أن يكون طول اسم المستخدم كحد أقصى 15 رقم';
+    $username_len15_msg = 'يجب أن يكون طول اسم المستخدم كحد أقصى 15 حرف';
   }
 
   if ($specialchars_username) {

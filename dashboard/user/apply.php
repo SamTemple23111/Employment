@@ -71,10 +71,6 @@ if ($query) {
     echo "<script>alert('تم التقديم بنجاح');</script>";
     echo "<script>window.location.href = 'home';</script>";
 } else {
-
-
-
-
     echo "<script>alert('خطأ لم يتم التقديم حاول مرة اخرى);</script>";
     echo "<script>window.location.href = 'home';</script>";
 }
