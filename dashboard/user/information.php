@@ -40,6 +40,8 @@ $data = mysqli_fetch_array($query);
 
     <?php
 
+
+
     echo ' <section style="background-color: #eee;">
         <div class="container py-5">
 

@@ -573,7 +573,6 @@ if (isset($_POST['submit'])) {
               <div class="form-floating mb-3 col-md-6">
                 <select class="form-select" name="degree">
                   <option selected value="null">الرجاء اختيار المؤهل الدراسي</option>
-                  <option value="الثانويه">ثانوي</option>
                   <option value="دبلوم">دبلوم</option>
                   <option value="بكالوريوس">بكالوريوس</option>
                   <option value="ماجستير">ماجستير</option>
@@ -605,7 +604,6 @@ if (isset($_POST['submit'])) {
                   <option selected value="null">المعدل من</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
-                  <option value="%">%</option>
                 </select>
                 <div class="text-start">
                   <p class="text-danger"><?php echo $gpa_from_empty_msg ?></p>

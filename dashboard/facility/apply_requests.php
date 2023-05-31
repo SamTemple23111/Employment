@@ -81,6 +81,9 @@ if (isset($id) && $role == 'facility') {
 
     <section class="card-animation container py-2 p-5">
         <?php
+
+
+
         include '../../database/conn.php';
         $sql = "SELECT * FROM users_apply where facility_id = $id";
         $query = mysqli_query($conn, $sql);

@@ -151,7 +151,19 @@ $rows_facilities_request = mysqli_num_rows($query_facilities_request);
 
         <div class="py-3 row text-center d-flex align-items-stretch">
 
-          <div class="col-md-4 mb-3">
+          <div class="col-sm-4 mb-3 ">
+            <div class="card testimonial-card ">
+              <div class="avatar mx-auto bg-white">
+                <i class="fa-solid fa-suitcase mt-4 fa-4x" style="color: #5725A5"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="mb-3">الباحثين عن عمل</h4>
+                <h2 class="dark-grey-text mt-4"><?php echo $rows_users ?></h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4 mb-3">
             <div class="card testimonial-card ">
               <div class="avatar mx-auto bg-white">
                 <i class="fa-solid fa-building mt-4 fa-4x" style="color: #2B4177"></i>
@@ -163,7 +175,7 @@ $rows_facilities_request = mysqli_num_rows($query_facilities_request);
             </div>
           </div>
 
-          <div class="col-md-4 mb-3 ">
+          <div class="col-sm-4 mb-3">
             <div class="card testimonial-card ">
               <div class="avatar mx-auto bg-white">
                 <i class="fa-solid fa-file-signature mt-4 fa-4x" style="color: #178573"></i>
@@ -175,17 +187,6 @@ $rows_facilities_request = mysqli_num_rows($query_facilities_request);
             </div>
           </div>
 
-          <div class="col-md-4 mb-3 ">
-            <div class="card testimonial-card ">
-              <div class="avatar mx-auto bg-white">
-                <i class="fa-solid fa-suitcase mt-4 fa-4x" style="color: #5725A5"></i>
-              </div>
-              <div class="card-body">
-                <h4 class="mb-3">الباحثين عن عمل</h4>
-                <h2 class="dark-grey-text mt-4"><?php echo $rows_users ?></h2>
-              </div>
-            </div>
-          </div>
 
 
         </div>
